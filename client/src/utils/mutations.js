@@ -33,3 +33,26 @@ mutation login($email: String!, $password: String!) {
     }
   }
 `;
+
+export const BEGIN_CREATE = gql`
+mutation beginCreate($partyName: String!, $gameType: String!, $course: String!) {
+  beginCreate(partyName: $partyName, gameType: $gameType, course: $course) {
+    players {
+      name
+    }
+  }
+}
+`;
+
+export const GAMES = gql`
+mutation games($partyName: String!) {
+  games(partyName: $partyName) {
+    partyName
+    gameType
+    course
+    players {
+      name
+    }
+  }
+}
+`;
