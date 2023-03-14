@@ -43,7 +43,40 @@ export default function Homepage() {
   const [partyName, setPartyName] = useState("");
   const [gameType, setGameType] = useState("");
   const [course, setCourse] = useState("");
-  const [baseCreated, setBaseCreated] = useState("");
+  const [playerCount, setPlayerCount] = useState("");
+  const [playerHandicap, setPlayerHandicap] = useState("");
+  const playerNames = [];
+
+  const setPlayerName = (value) => {
+    playerNames.push(value);
+  }
+
+  const [formComplete, setFormComplete] = useState("");
+
+  const handicap = [];
+  for(let i = 0; i < playerCount; i++) {
+    handicap.push(<Input className="handicaps" key={i} onChange={(e) => setPlayerHandicap(e.target.value)} placeholder="enter player handicap" />)
+  }
+
+  const players = []
+  for(let i = 0; i < playerCount; i++) {
+    players.push(<Input className="playerNames" key={i} onChange={(e) => setPlayerName(e.target.value)} placeholder="enter player name" />)
+  }
+
+  if (formComplete || gameType === "Scramble") {
+    return(
+      <>
+        <form className="realForm">
+          <Input className="realPartyName" type="text" value={partyName} placeholder={partyName} />
+          <Input className="realCourseName" type="text" value={course} placeholder={course} />
+          <Input className="realGameType" type="text" value={gameType} placeholder={gameType} />
+          <div className="playerFill">{players}</div>
+          <div className="playerFillHandicap">{handicap}</div>
+          <Button className="realFormSubmitBtn" type="submit" variant="blue">Lets's get to it!</Button>
+        </form>
+      </>
+    )
+  }
 
   return (
     <>
@@ -85,6 +118,7 @@ export default function Homepage() {
                       </option>
                     </Select>
                   </Stack>
+                    <Input className="playerCount" value={playerCount} onChange={(e) => setPlayerCount(e.target.value)} placeholder="enter number of players" />
                   <Stack spacing={3}>
                     <Select
                       placeholder="choose a game"
@@ -108,6 +142,7 @@ export default function Homepage() {
                     type="submit"
                     className="submitBtn"
                     colorScheme="blue"
+                    onSubmit={setFormComplete}
                   >
                     Let's Go!
                   </Button>
@@ -132,5 +167,5 @@ export default function Homepage() {
         </>
       )}
     </>
-  );
-}
+  )
+};
