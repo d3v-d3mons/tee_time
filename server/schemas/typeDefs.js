@@ -11,24 +11,25 @@ const typeDefs = gql`
 
     type Game {
         _id: ID
-        partyName: String!
-        gameType: String!
-        course: String!
+        partyName: String
+        gameType: String
+        course: [Course]
         players: [Player]
     }
 
     type Player {
-        name: String!
-        handGrenades: Int!
-        mulligans: Int!
-        handicap: Int!
-        score: Int!
+        _id: ID
+        name: String
+        handGrenades: Int
+        mulligans: Int
+        handicap: Int
+        score: Int
     }
 
     type Course {
         _id: ID
-        courseName: String!
-        holes: Int!
+        courseName: String
+        holes: Int
     }
 
     type Auth {
@@ -43,7 +44,7 @@ const typeDefs = gql`
 
     type Mutation {
         addUser(firstName: String!, lastName: String!, nickname: String!, email: String!, password: String!): Auth
-        updateUser(firstName: String, lastName: String, nickname: String!, email: String, password: String): User
+        updateUser(firstName: String!, lastName: String!, nickname: String!, email: String!, password: String!): User
         login(email: String!, password: String!): Auth
         beginCreate(partyName: String!, gameType: String!, course: String!): Game
         games(partyName: String!): Game
