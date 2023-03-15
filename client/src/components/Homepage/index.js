@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import auth from "../../utils/auth";
-import { BEGIN_CREATE } from "../../utils/mutations";
+import { BEGIN_CREATE, ADD_PLAYER } from "../../utils/mutations";
 import {
   Button,
   ModalOverlay,
@@ -19,11 +19,13 @@ import { Link } from "react-router-dom";
 
 export default function Homepage() {
   const [beginCreate] = useMutation(BEGIN_CREATE);
+  const [addPlayer] = useMutation(ADD_PLAYER);
+
   const began = [];
 
   const newGameHandler = async (e) => {
     e.preventDefault();
-    if (!partyName || !gameType || !course) {
+    if (!partyName || !gameType || !course || !playerCount) {
       alert("you must fill all fields");
     }
     try {
@@ -33,7 +35,12 @@ export default function Homepage() {
           gameType: gameType,
           course: course,
         },
-      });
+      }).then((data) => {
+        if(data) {
+          setFormComplete(true)
+          console.log('working');
+        }
+      })
     } catch (err) {
       console.error(err);
     }
@@ -45,37 +52,77 @@ export default function Homepage() {
   const [course, setCourse] = useState("");
   const [playerCount, setPlayerCount] = useState("");
   const [playerHandicap, setPlayerHandicap] = useState("");
-  const playerNames = [];
+  const [playerName, setPlayerName] = useState("");
+  // const playerNames = [];
 
-  const setPlayerName = (value) => {
-    playerNames.push(value);
-  }
+  // const setPlayerName = (value) => {
+  //   playerNames.push(value);
+  // };
 
   const [formComplete, setFormComplete] = useState("");
 
-  const handicap = [];
-  for(let i = 0; i < playerCount; i++) {
-    handicap.push(<Input className="handicaps" key={i} onChange={(e) => setPlayerHandicap(e.target.value)} placeholder="enter player handicap" />)
+  // const handlePlayer = async () => {
+  //   for(let i = 0; i < playerNames.length; i++) {
+  //     // addPlayer({
+  //     //   variables: {
+  //     //     name: playerNames[i],
+  //     //   }
+  //     // });
+  //     console.log(playerNames[i]);
+  //   }
+  // };
+
+  // const handlePlayerNames = () => {
+  //   for(let i = 0; i < playerCount.length; i++) {
+
+  //   }
+  // }
+
+  // const players = [];
+  // for (let i = 0; i < playerCount; i++) {
+  //   players.push(
+  //     <Input
+  //       className="playerNames"
+  //       key={i}
+  //       on={(e) => setPlayerName(e.target.value)}
+  //       placeholder="enter player name"
+  //     />
+  //   )
+  // }
+  const addAnother = () => {
+
   }
 
-  const players = []
-  for(let i = 0; i < playerCount; i++) {
-    players.push(<Input className="playerNames" key={i} onChange={(e) => setPlayerName(e.target.value)} placeholder="enter player name" />)
-  }
 
-  if (formComplete || gameType === "Scramble") {
-    return(
+  if (formComplete === true) {
+    return (
       <>
         <form className="realForm">
-          <Input className="realPartyName" type="text" value={partyName} placeholder={partyName} />
-          <Input className="realCourseName" type="text" value={course} placeholder={course} />
-          <Input className="realGameType" type="text" value={gameType} placeholder={gameType} />
-          <div className="playerFill">{players}</div>
-          <div className="playerFillHandicap">{handicap}</div>
-          <Button className="realFormSubmitBtn" type="submit" variant="blue">Lets's get to it!</Button>
+          <Input
+            className="realPartyName"
+            type="text"
+            value={partyName}
+            placeholder={partyName}
+          />
+          <Input
+            className="realCourseName"
+            type="text"
+            value={course}
+            placeholder={course}
+          />
+          <Input
+            className="realGameType"
+            type="text"
+            value={gameType}
+            placeholder={gameType}
+          />
+          <Input className="realAddPlayer" type="text" value={playerName} placeholder="enter players name here" />
+          <Button className="realFormSubmitBtn" type="click" variant="blue" onClick={addAnother}>
+            Add more players
+          </Button>
         </form>
       </>
-    )
+    );
   }
 
   return (
@@ -118,7 +165,12 @@ export default function Homepage() {
                       </option>
                     </Select>
                   </Stack>
-                    <Input className="playerCount" value={playerCount} onChange={(e) => setPlayerCount(e.target.value)} placeholder="enter number of players" />
+                  <Input
+                    className="playerCount"
+                    value={playerCount}
+                    onChange={(e) => setPlayerCount(e.target.value)}
+                    placeholder="enter number of players"
+                  />
                   <Stack spacing={3}>
                     <Select
                       placeholder="choose a game"
@@ -142,7 +194,6 @@ export default function Homepage() {
                     type="submit"
                     className="submitBtn"
                     colorScheme="blue"
-                    onSubmit={setFormComplete}
                   >
                     Let's Go!
                   </Button>
@@ -167,5 +218,5 @@ export default function Homepage() {
         </>
       )}
     </>
-  )
-};
+  );
+}

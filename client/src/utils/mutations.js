@@ -58,9 +58,13 @@ mutation games($partyName: String!) {
 `;
 
 export const ADD_PLAYER = gql`
-mutation addPlayer($name: String!, handGrenades: Int!, mulligans: Int!, handicap: Int!, score: Int!) {
+mutation addPlayer($name: String!, $handGrenades: Int!, $mulligans: Int!, $handicap: Int!, $score: Int!) {
   addPlayer(name: $name, handGrenades: $handGrenades, mulligans: $mulligans, handicap: $handicap, score: $score) {
-    
+    players {
+      handGrenades
+      mulligans
+      handicap
+    }
   }
 }
-`
+`;
