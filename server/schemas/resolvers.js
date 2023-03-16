@@ -18,22 +18,22 @@ const resolvers = {
             }
             return await Player.find(params).populate('name');
         },
-        getGame: async (parent, { partyName }) => {
-            const params = {}
-            if(partyName) {
-                params.partyName = partyName;
-            }
-            return await Game.find(params).populate('players');
-        }
+        // getGame: async (parent, { partyName }) => {
+        //     const params = {}
+        //     if(partyName) {
+        //         params.partyName = partyName;
+        //     }
+        //     return await Game.find(params).populate('players');
+        // }
     },
     Mutation: {
-        games: async (parent, { partyName }) => {
-            const game = await Game.findOne({ partyName });
-            if(!game) {
-                console.log('not a game')
-            }
-            return  game ;
-        },
+        // games: async (parent, { partyName }) => {
+        //     const game = await Game.findOne({ partyName });
+        //     if(!game) {
+        //         console.log('not a game')
+        //     }
+        //     return  game ;
+        // },
         addUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);

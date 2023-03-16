@@ -23,20 +23,20 @@ export const QUERY_PLAYERS = gql`
     }
 `;
 
-export const QUERY_GAMES = gql`
-    query getGames($partyName: String) {
-        getGames(partyName: $partyName) {
-            _id
-            partyName
-            gameType
-            course
-            players {
-                name
-                handGrenades
-                mulligans
-                handicap
-                score
-            }
-        }
-    }
-`;
+// export const QUERY_GAMES = gql`
+//     query getGames($partyName: String) {
+//         getGames(partyName: $partyName) {
+//             _id
+//             partyName
+//             gameType
+//             course
+//             players {
+//                 name
+//                 handGrenades
+//                 mulligans
+//                 handicap
+//                 score
+//             }
+//         }
+//     }
+// `;

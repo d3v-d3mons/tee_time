@@ -12,24 +12,24 @@ import {
     Input,
     Button,
   } from '@chakra-ui/react'
-import { QUERY_GAMES } from "../../utils/queries";
-import { useLazyQuery } from "@apollo/client";
+// import { QUERY_GAMES } from "../../utils/queries";
+// import { useLazyQuery } from "@apollo/client";
 
 
 
 export default function Scorecard () {
-    const [queryGames] = useLazyQuery(QUERY_GAMES);
+    // const [queryGames] = useLazyQuery(QUERY_GAMES);
     
     
-    const searchParty = (e) => {
-        e.preventDefault();
-        const game = queryGames({
-            variables: {
-                partyName: partyName,
-            },
-        })
-        console.log(game);
-    }
+    // const searchParty = (e) => {
+    //     e.preventDefault();
+    //     const game = queryGames({
+    //         variables: {
+    //             partyName: partyName,
+    //         },
+    //     })
+    //     console.log(game);
+    // }
 
     const [partyName, setPartyName] = useState("");
 
@@ -37,7 +37,7 @@ export default function Scorecard () {
     return(
         <>
         <Input className="partySearch" placeholder="search for a party" value={partyName} onChange={setPartyName} />
-        <Button colorScheme="blue" onClick={searchParty}>Search</Button>
+        {/* <Button colorScheme="blue" onClick={searchParty}>Search</Button> */}
         
         <TableContainer>
             <Table>
