@@ -46,11 +46,13 @@ const resolvers = {
         },
         beginCreate: async (parent, args) => {
             const game = await Game.create(args);
-            return { game }
+            console.log(game);
+            return game; 
         },
         addPlayer: async (parent, args, err) => {
             const player = await Player.create(args);
-            return { player }
+            console.log(player);
+            return player;
         }
     }
 };

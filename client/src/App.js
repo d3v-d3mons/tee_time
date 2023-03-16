@@ -14,6 +14,7 @@ import Homepage from "./components/Homepage";
 import OurStory from "./components/OurStory";
 import Feedback from "./components/Feedback";
 import Scorecard from "./components/Scorecard";
+import NewPlayer from "./components/NewPlayer";
 import Footer from "./components/Footer";
 import "./App.css";
 
@@ -61,6 +62,7 @@ function App() {
             />
             <Route path="/feedback" element={<><Feedback /></>} />
             <Route path="/scorecard" element={<><Scorecard /></>} />
+            <Route path="/newplayer" element={<><NewPlayer /></>} />
           </Routes>
           <Footer />
         </Router>

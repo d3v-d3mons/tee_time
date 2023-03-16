@@ -48,7 +48,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         beginCreate(partyName: String!, gameType: String!, course: String!): Game
         games(partyName: String!): Game
-        addPlayer(name: String!, handGrenades: Int!, mulligans: Int!, handicap: Int!, score: Int!): Game
+        addPlayer(name: String!, handGrenades: Int!, mulligans: Int!, handicap: Int!): Game
     }
 `;
 
