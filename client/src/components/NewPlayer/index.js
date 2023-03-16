@@ -32,6 +32,7 @@ export default function NewPlayer() {
     if(!newplayer) {
       alert('Player name already taken!')
     }
+    window.location('/');
   }
 
   const incrementHandGrenades = () => {
@@ -42,6 +43,15 @@ export default function NewPlayer() {
   }
   const incrementHandicap = () => {
     setHandicap(prevState => prevState+1)
+  }
+  const decrementHandGrenades = () => {
+    setHandGrenades(prevState => prevState-1)
+  }
+  const decrementMulligans = () => {
+    setMulligans(prevState => prevState-1)
+  }
+  const decrementHandicap = () => {
+    setHandicap(prevState => prevState-1)
   }
 
   const [playerName, setPlayerName] = useState("");
@@ -68,12 +78,11 @@ export default function NewPlayer() {
           min={0}
           max={5}
           type="number"
-          onChange={incrementHandGrenades}
         >
           <NumberInputField placeholder="Do you REALLY need the hand grenades?"/>
           <NumberInputStepper>
-            <NumberIncrementStepper />
-            <NumberDecrementStepper />
+            <NumberIncrementStepper onClick={incrementHandGrenades}/>
+            <NumberDecrementStepper onClick={decrementHandGrenades}/>
           </NumberInputStepper>
         </NumberInput>
           <label className="playerLabel">Mulligans?:</label>
@@ -83,12 +92,11 @@ export default function NewPlayer() {
           min={0}
           max={5}
           value={playerMulligans}
-          onChange={incrementMulligans}
         >
           <NumberInputField placeholder="How many mulligans?"/>
           <NumberInputStepper>
-            <NumberIncrementStepper />
-            <NumberDecrementStepper />
+            <NumberIncrementStepper onClick={incrementMulligans}/>
+            <NumberDecrementStepper onClick={decrementMulligans}/>
           </NumberInputStepper>
         </NumberInput>
           <label className="playerLabel">Handicap?:</label>
@@ -98,16 +106,15 @@ export default function NewPlayer() {
           min={0}
           max={5}
           value={playerHandicap}
-          onChange={incrementHandicap}
         >
           <NumberInputField placeholder="enter handicap number here"/>
           <NumberInputStepper>
-            <NumberIncrementStepper />
-            <NumberDecrementStepper />
+            <NumberIncrementStepper onClick={incrementHandicap}/>
+            <NumberDecrementStepper onClick={decrementHandicap}/>
           </NumberInputStepper>
         </NumberInput>
       <Button className="submitFinal" type="submit" colorScheme="blue">
-        Let's hit the links now
+        Create Player
       </Button>
       </form>
         <Button type="button" colorScheme="green">Go to scorecard<Link to="/scorecard" /></Button>

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, useLazyQuery } from "@apollo/client";
 import auth from "../../utils/auth";
-import { BEGIN_CREATE, ADD_PLAYER } from "../../utils/mutations";
+import { BEGIN_CREATE } from "../../utils/mutations";
+import { QUERY_PLAYERS } from "../../utils/queries";
 import {
   Button,
   ModalOverlay,
@@ -19,8 +20,8 @@ import { Link } from "react-router-dom";
 
 export default function Homepage() {
   const [beginCreate] = useMutation(BEGIN_CREATE);
-  const [addPlayer] = useMutation(ADD_PLAYER);
-
+  const [queryPlayers, { name }] = useLazyQuery(QUERY_PLAYERS);
+ 
   const newGameHandler = async (e) => {
     e.preventDefault();
     if (!partyName || !gameType || !course) {
@@ -47,35 +48,32 @@ export default function Homepage() {
   const [gameType, setGameType] = useState("");
   const [course, setCourse] = useState("");
   const [playerName, setPlayerName] = useState("");
-  const [playerHandGrenades, setHandGrenades] = useState("");
-  const [playerMulligans, setMulligans] = useState("");
-  const [playerHandicap, setHandicap] = useState("");
 
   const [formComplete, setFormComplete] = useState("");
 
-
-  const addAnother = async (e) => {
+  
+  const collection = [];
+  const findPlayers = async (e) => {
     e.preventDefault();
-    if(!playerName) {
-      alert('must fill out name field to add player');
+    if(!partyName || !playerName) {
+      alert('please enter player name');
     }
     try {
-      return await addPlayer({
+      const players = await queryPlayers({
         variables: {
           name: playerName,
-          handGrenades: playerHandGrenades,
-          mulligans: playerMulligans,
-          handicap: playerHandicap,
-      }}).then((data) => {
-        if(data) {
-          console.log('player added');
-        } 
+        }
       })
+      const returnedPlayers = players.data.getPlayers;
+      console.log(returnedPlayers);
+      for(let i = 0; i < returnedPlayers.length; i++) {
+        collection.push( returnedPlayers[i] )
+      }
+      console.log(collection);
     } catch (err) {
       console.error(err);
     }
   }
-
 
   if (formComplete === true) {
     return (
@@ -83,14 +81,16 @@ export default function Homepage() {
         <form>
           <div value={partyName}></div>
           <Input className="playerName" type="text" value={playerName} placeholder="enter players name here" onChange={(e) => setPlayerName(e.target.value)}/>
-          <Input className="handGrenades" defaultValue={0} min={0} max={3} value={playerHandGrenades} onChange={(e) => setHandGrenades(e.target.value)} placeholder="enter number of hand grenades"/>
-          <Input className="mulligans" defaultValue={0} min={0} max={3} value={playerMulligans} onChange={(e) => setMulligans(e.target.value)} placeholder="enter number of mulligans" />
-          <Input className="handicap" defaultValue={0} min={0} max={5} value={playerHandicap} onChange={(e) => setHandicap(e.target.value)} placeholder="enter handicap amount(number)" /> 
+          <Button colorScheme="blue" className="findPlayer" onClick={findPlayers}>Search</Button>
+          <Button className="done" colorScheme="green"><Link to="/scorecard">Finished</Link></Button>
+          <div>
+            <ul>
+              {collection.map((player) => (
+                <li key={player.id}>{player.name}</li>
+              ))}
+            </ul>
+          </div>
         </form>
-          <Button className="submitFinal" type="click" variant="blue"><Link to="/scorecard" />Let's hit the links now</Button>
-          <Button className="realFormSubmitBtn" type="click" variant="blue" onClick={(e) => addAnother(e.target)}>
-            Add more players
-          </Button>
       </>
     );
   }
