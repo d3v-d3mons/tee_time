@@ -11,6 +11,13 @@ const resolvers = {
             }
             throw new AuthenticationError('You must be logged in to see high scores');
         },
+        getPlayers: async (parent, { name }) => {
+            const params = {}
+            if(name) {
+                params.name = name;
+            }
+            return await Player.find(params).populate('name');
+        }
     },
     Mutation: {
         games: async (parent, { partyName }) => {

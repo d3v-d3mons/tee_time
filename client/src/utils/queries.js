@@ -9,3 +9,16 @@ export const QUERY_USERS = gql`
             }
         }
 `;
+
+export const QUERY_PLAYERS = gql`
+    query getPlayers($name: String) {
+        getPlayers(name: $name) {
+            _id
+            name
+            handGrenades
+            mulligans
+            handicap
+            score
+        }
+    }
+`;
