@@ -17,6 +17,13 @@ const resolvers = {
                 params.name = name;
             }
             return await Player.find(params).populate('name');
+        },
+        getGame: async (parent, { partyName }) => {
+            const params = {}
+            if(partyName) {
+                params.partyName = partyName;
+            }
+            return await Game.find(params).populate('players');
         }
     },
     Mutation: {
@@ -60,7 +67,14 @@ const resolvers = {
             const player = await Player.create(args);
             console.log(player);
             return player;
-        }
+        },
+        // updatePlayer: async (parent, args) => {
+        //     const player = await Game.findOneAndUpdate({
+
+        //     })
+        //     console.log(player);
+        //     return player;
+        // }
     }
 };
 

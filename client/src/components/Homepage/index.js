@@ -83,14 +83,13 @@ export default function Homepage() {
           <Input className="playerName" type="text" value={playerName} placeholder="enter players name here" onChange={(e) => setPlayerName(e.target.value)}/>
           <Button colorScheme="blue" className="findPlayer" onClick={findPlayers}>Search</Button>
           <Button className="done" colorScheme="green"><Link to="/scorecard">Finished</Link></Button>
+        </form>
           <div>
             <ul>
-              {collection.map((player) => (
-                <li key={player.id}>{player.name}</li>
-              ))}
+              <li>Player List</li>
+              <li>{collection}</li>
             </ul>
           </div>
-        </form>
       </>
     );
   }
