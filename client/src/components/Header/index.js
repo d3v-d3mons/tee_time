@@ -132,29 +132,34 @@ export default function Header() {
             </BreadcrumbLink>
           </BreadcrumbItem>
           {auth.loggedIn() ? (
-          <BreadcrumbItem>
-            <BreadcrumbLink
-              id="navScorecard"
-              className={activeItem === "/scorecard" ? "activeTab" : ""}
-            >
-              <Link to="/scorecard">Scorecard</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          ) : (<BreadcrumbItem><BreadcrumbLink id="navNoScorecard">Log in or create an account to access scorecard</BreadcrumbLink></BreadcrumbItem>)}
-          <BreadcrumbItem>
-            <BreadcrumbLink
-              id="navFeedback"
-              className={activeItem === "/feedback" ? "activeTab" : ""}
-            >
-              <Link to="/feedback">Feedback</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink
+                id="navScorecard"
+                className={activeItem === "/scorecard" ? "activeTab" : ""}
+              >
+                <Link to="/scorecard">Scorecard</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          ) : (
+            <BreadcrumbItem>
+              <BreadcrumbLink id="navNoScorecard">
+                Log in or create an account to access scorecard
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          )}
           {auth.loggedIn() ? (
+            <>
+            <BreadcrumbItem>
+            <BreadcrumbLink id="navFeedback">
+              <Link to="/newplayer">New Player</Link>
+            </BreadcrumbLink>
+            </BreadcrumbItem>
             <BreadcrumbItem>
               <BreadcrumbLink onClick={logOut} id="navLogout">
                 Log Out
               </BreadcrumbLink>
             </BreadcrumbItem>
+          </>
           ) : (
             <BreadcrumbItem>
               <BreadcrumbLink onClick={onOpen} id="navLogin">
@@ -249,4 +254,4 @@ export default function Header() {
       </div>
     </>
   );
-};
+}

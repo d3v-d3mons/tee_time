@@ -10,22 +10,22 @@ const playerSchema = new Schema({
     },
     handGrenades: {
         type: Number,
-        required: true,
+        required: false,
         min: 0,
     },
     mulligans: {
         type: Number,
-        required: true,
+        required: false,
         min: 0,
     },
     handicap: {
         type: Number,
-        required: true,
+        required: false,
         min: 0,
     },
     score: {
         type: Number,
-        required: true,
+        required: false,
         min: 0
     }
 });

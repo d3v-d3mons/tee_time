@@ -21,11 +21,9 @@ export default function Homepage() {
   const [beginCreate] = useMutation(BEGIN_CREATE);
   const [addPlayer] = useMutation(ADD_PLAYER);
 
-  const began = [];
-
   const newGameHandler = async (e) => {
     e.preventDefault();
-    if (!partyName || !gameType || !course || !playerCount) {
+    if (!partyName || !gameType || !course) {
       alert("you must fill all fields");
     }
     try {
@@ -38,9 +36,7 @@ export default function Homepage() {
       }).then((data) => {
         if(data) {
           setFormComplete(true)
-          console.log('working');
-        }
-      })
+      }})
     } catch (err) {
       console.error(err);
     }
@@ -50,77 +46,51 @@ export default function Homepage() {
   const [partyName, setPartyName] = useState("");
   const [gameType, setGameType] = useState("");
   const [course, setCourse] = useState("");
-  const [playerCount, setPlayerCount] = useState("");
-  const [playerHandicap, setPlayerHandicap] = useState("");
   const [playerName, setPlayerName] = useState("");
-  // const playerNames = [];
-
-  // const setPlayerName = (value) => {
-  //   playerNames.push(value);
-  // };
+  const [playerHandGrenades, setHandGrenades] = useState("");
+  const [playerMulligans, setMulligans] = useState("");
+  const [playerHandicap, setHandicap] = useState("");
 
   const [formComplete, setFormComplete] = useState("");
 
-  // const handlePlayer = async () => {
-  //   for(let i = 0; i < playerNames.length; i++) {
-  //     // addPlayer({
-  //     //   variables: {
-  //     //     name: playerNames[i],
-  //     //   }
-  //     // });
-  //     console.log(playerNames[i]);
-  //   }
-  // };
 
-  // const handlePlayerNames = () => {
-  //   for(let i = 0; i < playerCount.length; i++) {
-
-  //   }
-  // }
-
-  // const players = [];
-  // for (let i = 0; i < playerCount; i++) {
-  //   players.push(
-  //     <Input
-  //       className="playerNames"
-  //       key={i}
-  //       on={(e) => setPlayerName(e.target.value)}
-  //       placeholder="enter player name"
-  //     />
-  //   )
-  // }
-  const addAnother = () => {
-
+  const addAnother = async (e) => {
+    e.preventDefault();
+    if(!playerName) {
+      alert('must fill out name field to add player');
+    }
+    try {
+      return await addPlayer({
+        variables: {
+          name: playerName,
+          handGrenades: playerHandGrenades,
+          mulligans: playerMulligans,
+          handicap: playerHandicap,
+      }}).then((data) => {
+        if(data) {
+          console.log('player added');
+        } 
+      })
+    } catch (err) {
+      console.error(err);
+    }
   }
 
 
   if (formComplete === true) {
     return (
       <>
-        <form className="realForm">
-          <Input
-            className="realPartyName"
-            type="text"
-            value={partyName}
-            placeholder={partyName}
-          />
-          <Input
-            className="realCourseName"
-            type="text"
-            value={course}
-            placeholder={course}
-          />
-          <Input
-            className="realGameType"
-            type="text"
-            value={gameType}
-            placeholder={gameType}
-          />
-          <Input className="realAddPlayer" type="text" value={playerName} placeholder="enter players name here" />
-          <Button className="realFormSubmitBtn" type="click" variant="blue" onClick={addAnother}>
+        <form>
+          <div value={partyName}></div>
+          <Input className="playerName" type="text" value={playerName} placeholder="enter players name here" onChange={(e) => setPlayerName(e.target.value)}/>
+          <Input className="handGrenades" defaultValue={0} min={0} max={3} value={playerHandGrenades} onChange={(e) => setHandGrenades(e.target.value)} placeholder="enter number of hand grenades"/>
+          <Input className="mulligans" defaultValue={0} min={0} max={3} value={playerMulligans} onChange={(e) => setMulligans(e.target.value)} placeholder="enter number of mulligans" />
+          <Input className="handicap" defaultValue={0} min={0} max={5} value={playerHandicap} onChange={(e) => setHandicap(e.target.value)} placeholder="enter handicap amount(number)" /> 
+        </form>
+          <Button className="submitFinal" type="click" variant="blue"><Link to="/scorecard" />Let's hit the links now</Button>
+          <Button className="realFormSubmitBtn" type="click" variant="blue" onClick={(e) => addAnother(e.target)}>
             Add more players
           </Button>
-        </form>
       </>
     );
   }
@@ -165,12 +135,6 @@ export default function Homepage() {
                       </option>
                     </Select>
                   </Stack>
-                  <Input
-                    className="playerCount"
-                    value={playerCount}
-                    onChange={(e) => setPlayerCount(e.target.value)}
-                    placeholder="enter number of players"
-                  />
                   <Stack spacing={3}>
                     <Select
                       placeholder="choose a game"
