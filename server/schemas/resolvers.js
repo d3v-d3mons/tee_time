@@ -22,9 +22,17 @@ const resolvers = {
             const params = {}
             if(partyName) {
                 params.partyName = partyName;
+                const game = await Game.find(params).populate('players');
+                return game;
             }
-            return await Game.find(params).populate('players');
-        }
+        },
+        game: async (parent, { id }, context) => {
+            if(context.id) {
+                const game = await Game.findById(context.user._id).populate(players);
+                return user.game.id(_id);
+            }
+            throw new AuthenticationError("Must be logged in");
+        },
     },
     Mutation: {
         addUser: async (parent, args) => {
@@ -61,16 +69,11 @@ const resolvers = {
             console.log(player);
             return player;
         },
-        // updateGame: async (parent, { partyName }, { score }) => {
-        //     const player = await Game.findOneAndUpdate({
-        //         variables: {
-        //             filter: partyName,
-        //             update: score,
-        //         },
-        //     });
-        //     console.log(player);
-        //     return player;
-        // }
+        updateGame: async (parent, id, args) => {
+            const player = await Game.findOneByIdAndUpdate(id, args, { new: true });
+            console.log(player);
+            return player;
+        }
     }
 };
 
