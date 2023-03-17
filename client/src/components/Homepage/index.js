@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
 export default function Homepage() {
   const [beginCreate] = useMutation(BEGIN_CREATE);
   const [queryPlayers, { name }] = useLazyQuery(QUERY_PLAYERS);
- 
+
   const newGameHandler = async (e) => {
     e.preventDefault();
     if (!partyName || !gameType || !course) {
@@ -35,9 +35,10 @@ export default function Homepage() {
           course: course,
         },
       }).then((data) => {
-        if(data) {
-          setFormComplete(true)
-      }})
+        if (data) {
+          setFormComplete(true);
+        }
+      });
     } catch (err) {
       console.error(err);
     }
@@ -51,48 +52,29 @@ export default function Homepage() {
 
   const [formComplete, setFormComplete] = useState("");
 
-  
   const collection = [];
   const findPlayers = async (e) => {
     e.preventDefault();
-    if(!partyName || !playerName) {
-      alert('please enter player name');
+    if (!partyName || !playerName) {
+      alert("please enter player name");
     }
     try {
       const players = await queryPlayers({
         variables: {
           name: playerName,
-        }
-      })
+        },
+      });
+      console.log(players);
       const returnedPlayers = players.data.getPlayers;
       console.log(returnedPlayers);
-      for(let i = 0; i < returnedPlayers.length; i++) {
-        collection.push( returnedPlayers[i] )
+      for (let i = 0; i < returnedPlayers.length; i++) {
+        collection.push(returnedPlayers[i]);
       }
       console.log(collection);
     } catch (err) {
       console.error(err);
     }
-  }
-
-  if (formComplete === true) {
-    return (
-      <>
-        <form>
-          <div value={partyName}></div>
-          <Input className="playerName" type="text" value={playerName} placeholder="enter players name here" onChange={(e) => setPlayerName(e.target.value)}/>
-          <Button colorScheme="blue" className="findPlayer" onClick={findPlayers}>Search</Button>
-          <Button className="done" colorScheme="green"><Link to="/scorecard">Finished</Link></Button>
-        </form>
-          <div>
-            <ul>
-              <li>Player List</li>
-              <li>{collection}</li>
-            </ul>
-          </div>
-      </>
-    );
-  }
+  };
 
   return (
     <>
@@ -164,6 +146,27 @@ export default function Homepage() {
               </ModalBody>
             </ModalContent>
           </Modal>
+          <form>
+            <div value={partyName}></div>
+            <Input
+              className="playerName"
+              type="text"
+              value={playerName}
+              placeholder="enter players name here"
+              onChange={(e) => setPlayerName(e.target.value)}
+            />
+            <Button
+              colorScheme="blue"
+              className="findPlayer"
+              onClick={findPlayers}
+            >
+              Search
+            </Button>
+            <Button className="done" colorScheme="green">
+              <Link to="/scorecard">Finished</Link>
+            </Button>
+          </form>
+          <div>{collection.map((__typename) => <p>{__typename.name}</p>)}</div>
         </>
       ) : (
         <>

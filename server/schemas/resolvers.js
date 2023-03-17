@@ -18,22 +18,15 @@ const resolvers = {
             }
             return await Player.find(params).populate('name');
         },
-        // getGame: async (parent, { partyName }) => {
-        //     const params = {}
-        //     if(partyName) {
-        //         params.partyName = partyName;
-        //     }
-        //     return await Game.find(params).populate('players');
-        // }
+        getGames: async (parent, { partyName }) => {
+            const params = {}
+            if(partyName) {
+                params.partyName = partyName;
+            }
+            return await Game.find(params).populate('players');
+        }
     },
     Mutation: {
-        // games: async (parent, { partyName }) => {
-        //     const game = await Game.findOne({ partyName });
-        //     if(!game) {
-        //         console.log('not a game')
-        //     }
-        //     return  game ;
-        // },
         addUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
@@ -63,15 +56,18 @@ const resolvers = {
             console.log(game);
             return game; 
         },
-        addPlayer: async (parent, args, err) => {
+        addPlayer: async (parent, args) => {
             const player = await Player.create(args);
             console.log(player);
             return player;
         },
-        // updatePlayer: async (parent, args) => {
+        // updateGame: async (parent, { partyName }, { score }) => {
         //     const player = await Game.findOneAndUpdate({
-
-        //     })
+        //         variables: {
+        //             filter: partyName,
+        //             update: score,
+        //         },
+        //     });
         //     console.log(player);
         //     return player;
         // }

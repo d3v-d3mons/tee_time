@@ -13,7 +13,7 @@ const typeDefs = gql`
         _id: ID
         partyName: String
         gameType: String
-        course: [Course]
+        course: String
         players: [Player]
     }
 
@@ -26,12 +26,6 @@ const typeDefs = gql`
         score: Int
     }
 
-    type Course {
-        _id: ID
-        courseName: String
-        holes: Int
-    }
-
     type Auth {
         token: ID
         user: User
@@ -40,7 +34,7 @@ const typeDefs = gql`
     type Query {
         users: User
         getPlayers(name: String): [Player]
-        game(partyName: String): [Game]
+        getGames(partyName: String): Game
     }
 
     type Mutation {
@@ -48,7 +42,6 @@ const typeDefs = gql`
         updateUser(firstName: String!, lastName: String!, nickname: String!, email: String!, password: String!): User
         login(email: String!, password: String!): Auth
         beginCreate(partyName: String!, gameType: String!, course: String!): Game
-        games(partyName: String!): Game
         addPlayer(name: String!, handGrenades: Int!, mulligans: Int!, handicap: Int!): Game
     }
 `;
