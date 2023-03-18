@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Table,
   Thead,
@@ -17,37 +17,28 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from "@chakra-ui/react";
-import { QUERY_GAMES } from "../../utils/queries";
+import { MY_GAME, QUERY_GAMES } from "../../utils/queries";
 import { useLazyQuery } from "@apollo/client";
+import { getFragmentDefinition } from "@apollo/client/utilities";
 
 export default function Scorecard() {
   const [queryGames] = useLazyQuery(QUERY_GAMES);
+  const [getMyGame] = useLazyQuery(MY_GAME);
 
-  const searchParty = async (e) => {
-    e.preventDefault();
-    const game = await queryGames({
-      variables: {
-        partyName: partyName,
-      },
-    });
+  const getGame = async () => {
+    const game = await getMyGame();
     console.log(game);
-  };
+  }
 
-
-
-  const [partyName, setPartyName] = useState("");
+  // const [partyName, setPartyName] = useState("");
 
   return (
     <>
-      <Input
-        className="partySearch"
-        placeholder="search for a party"
-        value={partyName}
-        onChange={(e) => setPartyName(e.target.value)}
-      />
-      <Button colorScheme="blue" onClick={searchParty}>
-        Search
-      </Button>
+
+    <button type="click" onClick={getGame}>Get game</button>
+      {/* <div className="gameName"><h1>{partyName}</h1></div> */}
+      {/* <div className="course">{course}</div> */}
+      {/* <div className="gameType">{gameMode}</div> */}
 
       <div className="scoreTable">
         <table>

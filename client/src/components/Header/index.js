@@ -115,7 +115,7 @@ export default function Header() {
         </Heading>
       </div>
       <div className="navBar">
-        <Breadcrumb separator="-" className="navBar">
+        <Breadcrumb separator=""className="navBar">
           <BreadcrumbItem>
             <BreadcrumbLink
               id="navHomeBtn"
@@ -133,6 +133,7 @@ export default function Header() {
             </BreadcrumbLink>
           </BreadcrumbItem>
           {auth.loggedIn() ? (
+            <>
             <BreadcrumbItem>
               <BreadcrumbLink
                 id="navScorecard"
@@ -141,18 +142,9 @@ export default function Header() {
                 <Link to="/scorecard">Scorecard</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
-          ) : (
-            <BreadcrumbItem>
-              <BreadcrumbLink id="navNoScorecard">
-                Log in or create an account to access scorecard
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          )}
-          {auth.loggedIn() ? (
-            <>
             <BreadcrumbItem>
             <BreadcrumbLink id="navFeedback">
-              <Link to="/newplayer">New Player</Link>
+              <Link to="/newplayer">Add Players</Link>
             </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
@@ -160,8 +152,14 @@ export default function Header() {
                 Log Out
               </BreadcrumbLink>
             </BreadcrumbItem>
-          </>
+            </>
           ) : (
+            <>
+            <BreadcrumbItem>
+              <BreadcrumbLink id="navNoScorecard">
+                Log in or create an account to access scorecard
+              </BreadcrumbLink>
+            </BreadcrumbItem>
             <BreadcrumbItem>
               <BreadcrumbLink onClick={onOpen} id="navLogin">
                 Login/Signup
@@ -250,6 +248,7 @@ export default function Header() {
                 </ModalContent>
               </Modal>
             </BreadcrumbItem>
+            </>
           )}
         </Breadcrumb>
       </div>

@@ -7,7 +7,7 @@ const typeDefs = gql`
         lastName: String
         email: String
         nickname: String
-        games: [Game]
+        game: [Game]
     }
 
     type Game {
@@ -21,9 +21,6 @@ const typeDefs = gql`
     type Player {
         _id: ID
         name: String
-        handGrenades: Int
-        mulligans: Int
-        handicap: Int
         score: Int
     }
 
@@ -43,8 +40,8 @@ const typeDefs = gql`
         addUser(firstName: String!, lastName: String!, nickname: String!, email: String!, password: String!): Auth
         updateUser(firstName: String!, lastName: String!, nickname: String!, email: String!, password: String!): User
         login(email: String!, password: String!): Auth
-        beginCreate(partyName: String!, gameType: String!, course: String!): Game
-        addPlayer(name: String!, handGrenades: Int!, mulligans: Int!, handicap: Int!): Game
+        beginCreate(partyName: String!, gameType: String!, course: String!): [Game]
+        addPlayers(name: String!): Game
         updateGame(name: String!, handGrenades: Int!, mulligans: Int!, handicap: Int!): Game
     }
 `;

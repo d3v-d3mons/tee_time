@@ -7,117 +7,94 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  useDisclosure,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ADD_PLAYER } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 
 export default function NewPlayer() {
-
   const [addPlayer] = useMutation(ADD_PLAYER);
 
-  const handleNewPlayer = (e) => {
-    e.preventDefault();
-    if(!playerName) {
-      alert('Player must have a name');
-    }
-    const newplayer = addPlayer({
+  const addNewPlayer1 = async () => {
+    const player = await addPlayer({
       variables: {
-        name: playerName,
-        handGrenades: playerHandGrenades,
-        mulligans: playerMulligans,
-        handicap: playerHandicap,
+        name: player1
       }
     })
-    if(!newplayer) {
-      alert('Player name already taken!')
-    }
-    window.location('/');
   }
 
-  const incrementHandGrenades = () => {
-    setHandGrenades(prevState => prevState+1)
-  }
-  const incrementMulligans = () => {
-    setMulligans(prevState => prevState+1)
-  }
-  const incrementHandicap = () => {
-    setHandicap(prevState => prevState+1)
-  }
-  const decrementHandGrenades = () => {
-    setHandGrenades(prevState => prevState-1)
-  }
-  const decrementMulligans = () => {
-    setMulligans(prevState => prevState-1)
-  }
-  const decrementHandicap = () => {
-    setHandicap(prevState => prevState-1)
+  const addNewPlayer2 = async () => {
+    const player = await addPlayer({
+      variables: {
+        name: player2
+      }
+    })
   }
 
-  const [playerName, setPlayerName] = useState("");
-  const [playerHandGrenades, setHandGrenades] = useState(0);
-  const [playerMulligans, setMulligans] = useState(0);
-  const [playerHandicap, setHandicap] = useState(0);
+  const addNewPlayer3 = async () => {
+    const player = await addPlayer({
+      variables: {
+        name: player3
+      }
+    })
+  }
+
+  const addNewPlayer4 = async () => {
+    const player = await addPlayer({
+      variables: {
+        name: player4
+      }
+    })
+  }
+
+  const [player1, setPlayer1] = useState("");
+  const [player2, setPlayer2] = useState("");
+  const [player3, setPlayer3] = useState("");
+  const [player4, setPlayer4] = useState("");
 
   return (
     <>
-      <form onSubmit={handleNewPlayer}>
-        <label className="playerLabel">Enter name here:</label>
         <Input
           className="playerName"
           type="text"
-          value={playerName}
-          placeholder="enter players name here"
-          onChange={(e) => setPlayerName(e.target.value)}
+          value={player1}
+          placeholder="enter player 1 name here"
+          onChange={(e) => setPlayer1(e.target.value)}
         />
-        <label className="playerLabel">Hand Grenades?:</label>
-        <NumberInput
-          className="handGrenades"
-          value={playerHandGrenades}
-          defaultValue={0}
-          min={0}
-          max={5}
-          type="number"
-        >
-          <NumberInputField placeholder="Do you REALLY need the hand grenades?"/>
-          <NumberInputStepper>
-            <NumberIncrementStepper onClick={incrementHandGrenades}/>
-            <NumberDecrementStepper onClick={decrementHandGrenades}/>
-          </NumberInputStepper>
-        </NumberInput>
-          <label className="playerLabel">Mulligans?:</label>
-        <NumberInput
-          className="mulligans"
-          defaultValue={0}
-          min={0}
-          max={5}
-          value={playerMulligans}
-        >
-          <NumberInputField placeholder="How many mulligans?"/>
-          <NumberInputStepper>
-            <NumberIncrementStepper onClick={incrementMulligans}/>
-            <NumberDecrementStepper onClick={decrementMulligans}/>
-          </NumberInputStepper>
-        </NumberInput>
-          <label className="playerLabel">Handicap?:</label>
-        <NumberInput
-          className="handicap"
-          defaultValue={0}
-          min={0}
-          max={5}
-          value={playerHandicap}
-        >
-          <NumberInputField placeholder="enter handicap number here"/>
-          <NumberInputStepper>
-            <NumberIncrementStepper onClick={incrementHandicap}/>
-            <NumberDecrementStepper onClick={decrementHandicap}/>
-          </NumberInputStepper>
-        </NumberInput>
-      <Button className="submitFinal" type="submit" colorScheme="blue">
-        Create Player
+        <button className="playerBtn" onClick={addNewPlayer1}>Add Player</button>
+        <Input
+          className="playerName"
+          type="text"
+          value={player2}
+          placeholder="enter player 2 name"
+          onChange={(e) => setPlayer2(e.target.value)}
+        />
+        <button className="playerBtn" onClick={addNewPlayer2}>Add Player</button>
+        <Input
+          className="playerName"
+          type="text"
+          value={player3}
+          placeholder="enter player 3 name"
+          onChange={(e) => setPlayer3(e.target.value)}
+        />
+        <button className="playerBtn" onClick={addNewPlayer3}>Add Player</button>
+        <Input
+          className="playerName"
+          type="text"
+          value={player4}
+          placeholder="enter player 4 name"
+          onChange={(e) => setPlayer4(e.target.value)}
+        />
+        <button className="playerBtn" onClick={addNewPlayer4}>Add Player</button>
+      <Button type="button" colorScheme="green">
+        Go to scorecard
+        <Link to="/scorecard" />
       </Button>
-      </form>
-        <Button type="button" colorScheme="green">Go to scorecard<Link to="/scorecard" /></Button>
     </>
   );
 }

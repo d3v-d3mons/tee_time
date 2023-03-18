@@ -37,9 +37,9 @@ mutation login($email: String!, $password: String!) {
 export const BEGIN_CREATE = gql`
 mutation beginCreate($partyName: String!, $gameType: String!, $course: String!) {
   beginCreate(partyName: $partyName, gameType: $gameType, course: $course) {
-    players {
-      name
-    }
+    partyName
+    gameType
+    course
   }
 }
 `;
@@ -58,12 +58,13 @@ mutation games($partyName: String!) {
 `;
 
 export const ADD_PLAYER = gql`
-mutation addPlayer($name: String!, $handGrenades: Int!, $mulligans: Int!, $handicap: Int!) {
-  addPlayer(name: $name, handGrenades: $handGrenades, mulligans: $mulligans, handicap: $handicap) {
+mutation addPlayers($name: String!) {
+  addPlayers(name: $name) {
     players {
       name
     }
   }
 }
 `;
+
 

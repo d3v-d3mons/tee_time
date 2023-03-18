@@ -26,10 +26,10 @@ const resolvers = {
                 return game;
             }
         },
-        game: async (parent, { id }, context) => {
-            if(context.id) {
-                const game = await Game.findById(context.user._id).populate(players);
-                return user.game.id(_id);
+        game: async (parent, { _id }, context) => {
+            if(context.user) {
+                const game = await User.findById(context.user._id).populate('game');
+                return game;
             }
             throw new AuthenticationError("Must be logged in");
         },
@@ -64,7 +64,7 @@ const resolvers = {
             console.log(game);
             return game; 
         },
-        addPlayer: async (parent, args) => {
+        addPlayers: async (parent, args) => {
             const player = await Player.create(args);
             console.log(player);
             return player;
@@ -73,7 +73,14 @@ const resolvers = {
             const player = await Game.findOneByIdAndUpdate(id, args, { new: true });
             console.log(player);
             return player;
-        }
+        },
+        // beginCreate: async (parent, { data }, context) => {
+        //     if(context.user) {
+        //         const game = new Game({data});
+        //         await User.findByIdAndUpdate(context.user._id, { $push: {game: game}});
+        //     }
+        //     throw new AuthenticationError("Must be logged in");
+        // }
     }
 };
 

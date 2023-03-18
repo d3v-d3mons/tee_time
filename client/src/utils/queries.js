@@ -40,3 +40,32 @@ export const QUERY_GAMES = gql`
         }
     }
 `;
+
+export const GAME = gql`
+ query game($_id: ID!) {
+    game(_id: $_id) {
+        _id
+        partyName
+        gameType
+        course
+        players {
+            name
+            score
+        }
+    }
+ }
+`;
+
+export const MY_GAME = gql`
+ {
+    game {
+        partyName
+        gameType
+        course
+        players {
+            name
+            score
+        }
+    }
+ }
+`;
