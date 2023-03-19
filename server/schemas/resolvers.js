@@ -26,10 +26,11 @@ const resolvers = {
                 return game;
             }
         },
-        game: async (parent, { id }, context) => {
-            if(context.id) {
-                const game = await Game.findById(context.user._id).populate(players);
-                return user.game.id(_id);
+        game: async (parent, { _id }, context) => {
+            if(context.user) {
+                const game = await User.findById(context.user._id).populate('game')
+                console.log(game.game._id);
+                return game.game;
             }
             throw new AuthenticationError("Must be logged in");
         },
@@ -59,21 +60,33 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        beginCreate: async (parent, args) => {
-            const game = await Game.create(args);
+        beginCreate: async (parent, { args }, context) => {
+            if(context.user) {
+            const game = await new Game({ args });
             console.log(game);
-            return game; 
+            return await User.findByIdAndUpdate(context.user._id, { $push: { game: game } }); 
+            }
+            throw new AuthenticationError("must be logged in");
         },
-        addPlayer: async (parent, args) => {
-            const player = await Player.create(args);
+        addPlayers: async (parent, { _id, name, score }) => {
+            const player = await Player.create({ name, score });
             console.log(player);
+            console.log(_id);
+            await Game.findByIdAndUpdate(_id, { $push: { players: player } })
             return player;
         },
         updateGame: async (parent, id, args) => {
             const player = await Game.findOneByIdAndUpdate(id, args, { new: true });
             console.log(player);
             return player;
-        }
+        },
+        // beginCreate: async (parent, { data }, context) => {
+        //     if(context.user) {
+        //         const game = new Game({data});
+        //         await User.findByIdAndUpdate(context.user._id, { $push: {game: game}});
+        //     }
+        //     throw new AuthenticationError("Must be logged in");
+        // }
     }
 };
 

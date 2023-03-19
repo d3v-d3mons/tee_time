@@ -8,21 +8,6 @@ const playerSchema = new Schema({
         required: true,
         trim: true,
     },
-    handGrenades: {
-        type: Number,
-        required: false,
-        min: 0,
-    },
-    mulligans: {
-        type: Number,
-        required: false,
-        min: 0,
-    },
-    handicap: {
-        type: Number,
-        required: false,
-        min: 0,
-    },
     score: {
         type: Number,
         required: false,

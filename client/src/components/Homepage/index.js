@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useMutation, useLazyQuery } from "@apollo/client";
 import auth from "../../utils/auth";
-import { BEGIN_CREATE } from "../../utils/mutations";
+import { BEGIN_CREATE, ADD_PLAYER } from "../../utils/mutations";
 import { QUERY_PLAYERS } from "../../utils/queries";
 import {
   Button,
@@ -17,28 +17,27 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { GameContext } from "../../utils/GameContext";
 
 export default function Homepage() {
   const [beginCreate] = useMutation(BEGIN_CREATE);
-  const [queryPlayers, { name }] = useLazyQuery(QUERY_PLAYERS);
+  const [addPlayers] = useMutation(ADD_PLAYER);
+  const [currentGame, setCurrentGame] = useContext(GameContext);
 
-  const newGameHandler = async (e) => {
-    e.preventDefault();
+  const newGameHandler = async () => {
     if (!partyName || !gameType || !course) {
       alert("you must fill all fields");
     }
     try {
-      return await beginCreate({
+      const { game } = await beginCreate({
         variables: {
           partyName: partyName,
           gameType: gameType,
           course: course,
         },
-      }).then((data) => {
-        if (data) {
-          setFormComplete(true);
-        }
-      });
+      })
+      console.log(game);
+      alert(game);
     } catch (err) {
       console.error(err);
     }
@@ -48,33 +47,6 @@ export default function Homepage() {
   const [partyName, setPartyName] = useState("");
   const [gameType, setGameType] = useState("");
   const [course, setCourse] = useState("");
-  const [playerName, setPlayerName] = useState("");
-
-  const [formComplete, setFormComplete] = useState("");
-
-  const collection = [];
-  const findPlayers = async (e) => {
-    e.preventDefault();
-    if (!partyName || !playerName) {
-      alert("please enter player name");
-    }
-    try {
-      const players = await queryPlayers({
-        variables: {
-          name: playerName,
-        },
-      });
-      console.log(players);
-      const returnedPlayers = players.data.getPlayers;
-      console.log(returnedPlayers);
-      for (let i = 0; i < returnedPlayers.length; i++) {
-        collection.push(returnedPlayers[i]);
-      }
-      console.log(collection);
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   return (
     <>
@@ -91,7 +63,7 @@ export default function Homepage() {
               </ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                <form onSubmit={newGameHandler}>
+                <form>
                   <Input
                     value={partyName}
                     onChange={(e) => setPartyName(e.target.value)}
@@ -136,37 +108,17 @@ export default function Homepage() {
                     </Select>
                   </Stack>
                   <Button
-                    type="submit"
+                    type="click"
                     className="submitBtn"
-                    colorScheme="blue"
+                    onClick={newGameHandler}
                   >
                     Let's Go!
+                    
                   </Button>
                 </form>
               </ModalBody>
             </ModalContent>
           </Modal>
-          <form>
-            <div value={partyName}></div>
-            <Input
-              className="playerName"
-              type="text"
-              value={playerName}
-              placeholder="enter players name here"
-              onChange={(e) => setPlayerName(e.target.value)}
-            />
-            <Button
-              colorScheme="blue"
-              className="findPlayer"
-              onClick={findPlayers}
-            >
-              Search
-            </Button>
-            <Button className="done" colorScheme="green">
-              <Link to="/scorecard">Finished</Link>
-            </Button>
-          </form>
-          <div>{collection.map((__typename) => <p>{__typename.name}</p>)}</div>
         </>
       ) : (
         <>
