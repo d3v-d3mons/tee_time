@@ -59,7 +59,7 @@ export default function Header() {
       });
       const token = mutationResponse.data.addUser.token;
       auth.login(token);
-      window.location.assign("/newplayer");
+      window.location.assign("");
     } catch (err) {
       alert(err);
     }

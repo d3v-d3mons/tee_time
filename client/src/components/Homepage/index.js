@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useMutation, useLazyQuery } from "@apollo/client";
 import auth from "../../utils/auth";
 import { BEGIN_CREATE, ADD_PLAYER } from "../../utils/mutations";
@@ -17,17 +17,19 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { GameContext } from "../../utils/GameContext";
 
 export default function Homepage() {
   const [beginCreate] = useMutation(BEGIN_CREATE);
   const [addPlayers] = useMutation(ADD_PLAYER);
-
+  const [currentGame, setCurrentGame] = useContext(GameContext);
 
   const newGameHandler = async () => {
     if (!partyName || !gameType || !course) {
       alert("you must fill all fields");
     }
-      const game = await beginCreate({
+    try {
+      const { game } = await beginCreate({
         variables: {
           partyName: partyName,
           gameType: gameType,
@@ -35,7 +37,10 @@ export default function Homepage() {
         },
       })
       console.log(game);
-      return game;
+      alert(game);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();

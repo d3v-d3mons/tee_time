@@ -8,6 +8,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
+import GameProvider from "./utils/GameContext";
 
 import Header from "./components/Header";
 import Homepage from "./components/Homepage";
@@ -39,6 +40,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
+    <GameProvider>
     <ChakraProvider>
       <ApolloProvider client={client}>
         <Router>
@@ -68,6 +70,7 @@ function App() {
         </Router>
       </ApolloProvider>
     </ChakraProvider>
+    </GameProvider>
   );
 }
 

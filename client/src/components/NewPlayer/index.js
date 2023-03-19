@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Button,
   Input,
@@ -16,14 +16,20 @@ import {
 import { Link } from "react-router-dom";
 import { ADD_PLAYER } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
+import { GameContext } from "../../utils/GameContext";
 
 export default function NewPlayer() {
+  const [currentGame, setCurrentGame] = useContext(GameContext);
   const [addPlayer] = useMutation(ADD_PLAYER);
 
   const addNewPlayer1 = async () => {
+    console.log(currentGame);
+    alert(currentGame);
     const player = await addPlayer({
       variables: {
-        name: player1
+        _id: currentGame,
+        name: player1,
+        score: 0,
       }
     })
   }
@@ -31,7 +37,8 @@ export default function NewPlayer() {
   const addNewPlayer2 = async () => {
     const player = await addPlayer({
       variables: {
-        name: player2
+        _id: currentGame,
+        name: player2,
       }
     })
   }
@@ -39,7 +46,8 @@ export default function NewPlayer() {
   const addNewPlayer3 = async () => {
     const player = await addPlayer({
       variables: {
-        name: player3
+        _id: currentGame,
+        name: player3,
       }
     })
   }
@@ -47,7 +55,8 @@ export default function NewPlayer() {
   const addNewPlayer4 = async () => {
     const player = await addPlayer({
       variables: {
-        name: player4
+        _id: currentGame,
+        name: player4,
       }
     })
   }
