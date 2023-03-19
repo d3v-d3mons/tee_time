@@ -11,7 +11,8 @@ const playerSchema = new Schema({
     score: {
         type: Number,
         required: false,
-        min: 0
+        min: 0,
+        trim: true,
     }
 });
 

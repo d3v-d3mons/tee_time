@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useMutation, useLazyQuery } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import auth from "../../utils/auth";
 import { BEGIN_CREATE, ADD_PLAYER } from "../../utils/mutations";
 import { QUERY_PLAYERS } from "../../utils/queries";
@@ -22,14 +23,12 @@ import { GameContext } from "../../utils/GameContext";
 export default function Homepage() {
   const [beginCreate] = useMutation(BEGIN_CREATE);
   const [addPlayers] = useMutation(ADD_PLAYER);
-  const [currentGame, setCurrentGame] = useContext(GameContext);
 
   const newGameHandler = async () => {
     if (!partyName || !gameType || !course) {
       alert("you must fill all fields");
     }
-    try {
-      const { game } = await beginCreate({
+      const game = await beginCreate({
         variables: {
           partyName: partyName,
           gameType: gameType,
@@ -37,16 +36,17 @@ export default function Homepage() {
         },
       })
       console.log(game);
-      alert(game);
-    } catch (err) {
-      console.error(err);
-    }
+      window.location.replace("/newplayer")
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [partyName, setPartyName] = useState("");
   const [gameType, setGameType] = useState("");
   const [course, setCourse] = useState("");
+  // const [player1, setPlayer1] = useState("");
+  // const [player2, setPlayer2] = useState("");
+  // const [player3, setPlayer3] = useState("");
+  // const [player4, setPlayer4] = useState("");
 
   return (
     <>
@@ -107,13 +107,40 @@ export default function Homepage() {
                       </option>
                     </Select>
                   </Stack>
+                  {/* <Input
+                    className="playerName"
+                    type="text"
+                    value={player1}
+                    placeholder="enter player 1 name here"
+                    onChange={(e) => setPlayer1(e.target.value)}
+                  />
+                  <Input
+                    className="playerName"
+                    type="text"
+                    value={player2}
+                    placeholder="enter player 2 name"
+                    onChange={(e) => setPlayer2(e.target.value)}
+                  />
+                  <Input
+                    className="playerName"
+                    type="text"
+                    value={player3}
+                    placeholder="enter player 3 name"
+                    onChange={(e) => setPlayer3(e.target.value)}
+                  />
+                  <Input
+                    className="playerName"
+                    type="text"
+                    value={player4}
+                    placeholder="enter player 4 name"
+                    onChange={(e) => setPlayer4(e.target.value)}
+                  /> */}
                   <Button
                     type="click"
                     className="submitBtn"
                     onClick={newGameHandler}
                   >
                     Let's Go!
-                    
                   </Button>
                 </form>
               </ModalBody>
