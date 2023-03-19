@@ -26,21 +26,31 @@ export default function Scorecard() {
   const [getMyGame] = useLazyQuery(MY_GAME);
 
   const getGame = async () => {
-    const game = await getMyGame();
-    console.log(game);
+    const game = await queryGames({
+      variables: {
+        partyName: partyName
+      }
+    });
+    console.log(game.data.getGames[0]);
+    setGamePartyName(game.data.getGames[0].partyName);
+    setPlayerName(game.data.getGames[0].players);
+
   }
 
-  // const [partyName, setPartyName] = useState("");
+  const [partyName, setPartyName] = useState("");
+  const [gamePartyName, setGamePartyName] = useState("");
+  const [playerName, setPlayerName] = useState("");
 
   return (
     <>
-
+  <Input className="getGameInput" value={partyName} onChange={(e) => setPartyName(e.target.value)} />
     <button type="click" onClick={getGame}>Get game</button>
       {/* <div className="gameName"><h1>{partyName}</h1></div> */}
       {/* <div className="course">{course}</div> */}
       {/* <div className="gameType">{gameMode}</div> */}
 
       <div className="scoreTable">
+          <h1>{gamePartyName}</h1>
         <table>
             <thead>
                 <tr className="tabletop">
@@ -63,6 +73,9 @@ export default function Scorecard() {
                     <th>Hole 16</th>
                     <th>Hole 17</th>
                     <th>Hole 18</th>
+                </tr>
+                <tr className="player1">
+                  <th>{playerName}</th>
                 </tr>
             </thead>
             <tbody className="tablebody">

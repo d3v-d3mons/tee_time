@@ -60,23 +60,28 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        beginCreate: async (parent, { args }, context) => {
-            if(context.user) {
-            const game = await new Game({ args });
+        beginCreate: async (parent, { partyName, course, gameType }, context) => {
+            // if(context.user) {
+            const game = await Game.create({ partyName, course, gameType });
             console.log(game);
-            return await User.findByIdAndUpdate(context.user._id, { $push: { game: game } }); 
-            }
-            throw new AuthenticationError("must be logged in");
+            const user = await User.findByIdAndUpdate(context.user._id, { $push: { game: game } })
+            console.log(user);
+            return game; 
+            // }
+            // throw new AuthenticationError("must be logged in");
         },
-        addPlayers: async (parent, { _id, name, score }) => {
-            const player = await Player.create({ name, score });
+        addPlayers: async (parent, { partyName, name, score }) => {
+            const player = new Player({ name, score });
             console.log(player);
-            console.log(_id);
-            await Game.findByIdAndUpdate(_id, { $push: { players: player } })
+            const id = player._id;
+            await Game.findOneAndUpdate(
+                { partyName: partyName },
+                { $push: { players: player }},
+            );
             return player;
         },
         updateGame: async (parent, id, args) => {
-            const player = await Game.findOneByIdAndUpdate(id, args, { new: true });
+            const player = await Game.findByIdAndUpdate(id, args, { new: true });
             console.log(player);
             return player;
         },

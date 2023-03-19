@@ -33,15 +33,15 @@ const typeDefs = gql`
         users: User
         game: Game
         getPlayers(name: String): [Player]
-        getGames(partyName: String): [Game]
+        getGames(partyName: String!): [Game]
     }
 
     type Mutation {
         addUser(firstName: String!, lastName: String!, nickname: String!, email: String!, password: String!): Auth
         updateUser(firstName: String!, lastName: String!, nickname: String!, email: String!, password: String!): User
         login(email: String!, password: String!): Auth
-        beginCreate(partyName: String!, gameType: String!, course: String!): User
-        addPlayers(_id: ID!, name: String!, score: Int!): Game
+        beginCreate(partyName: String!, gameType: String!, course: String!): Game
+        addPlayers(partyName: String!, name: String!, score: Int!): Game
         updateGame(name: String!, handGrenades: Int!, mulligans: Int!, handicap: Int!): Game
     }
 `;

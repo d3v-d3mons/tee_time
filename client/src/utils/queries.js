@@ -24,7 +24,7 @@ export const QUERY_PLAYERS = gql`
 `;
 
 export const QUERY_GAMES = gql`
-    query getGames($partyName: String) {
+    query getGames($partyName: String!) {
         getGames(partyName: $partyName) {
             _id
             partyName
@@ -32,9 +32,6 @@ export const QUERY_GAMES = gql`
             course
             players {
                 name
-                handGrenades
-                mulligans
-                handicap
                 score
             }
         }
