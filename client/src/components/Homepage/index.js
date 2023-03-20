@@ -35,7 +35,6 @@ export default function Homepage() {
           course: course,
         },
       })
-      console.log(game);
       window.location.replace("/newplayer")
   };
 
@@ -43,10 +42,6 @@ export default function Homepage() {
   const [partyName, setPartyName] = useState("");
   const [gameType, setGameType] = useState("");
   const [course, setCourse] = useState("");
-  // const [player1, setPlayer1] = useState("");
-  // const [player2, setPlayer2] = useState("");
-  // const [player3, setPlayer3] = useState("");
-  // const [player4, setPlayer4] = useState("");
 
   return (
     <>
@@ -107,34 +102,6 @@ export default function Homepage() {
                       </option>
                     </Select>
                   </Stack>
-                  {/* <Input
-                    className="playerName"
-                    type="text"
-                    value={player1}
-                    placeholder="enter player 1 name here"
-                    onChange={(e) => setPlayer1(e.target.value)}
-                  />
-                  <Input
-                    className="playerName"
-                    type="text"
-                    value={player2}
-                    placeholder="enter player 2 name"
-                    onChange={(e) => setPlayer2(e.target.value)}
-                  />
-                  <Input
-                    className="playerName"
-                    type="text"
-                    value={player3}
-                    placeholder="enter player 3 name"
-                    onChange={(e) => setPlayer3(e.target.value)}
-                  />
-                  <Input
-                    className="playerName"
-                    type="text"
-                    value={player4}
-                    placeholder="enter player 4 name"
-                    onChange={(e) => setPlayer4(e.target.value)}
-                  /> */}
                   <Button
                     type="click"
                     className="submitBtn"
