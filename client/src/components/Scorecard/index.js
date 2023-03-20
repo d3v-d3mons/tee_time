@@ -10,13 +10,49 @@ import {
 } from "@chakra-ui/react";
 import { MY_GAME, QUERY_GAMES } from "../../utils/queries";
 import { useLazyQuery, useMutation } from "@apollo/client";
-import { ADD_SCORE_ONE } from "../../utils/mutations";
+import {
+  ADD_SCORE_ONE,
+  ADD_SCORE_TWO,
+  ADD_SCORE_THREE,
+  ADD_SCORE_FOUR,
+  ADD_SCORE_FIVE,
+  ADD_SCORE_SIX,
+  ADD_SCORE_SEVEN,
+  ADD_SCORE_EIGHT,
+  ADD_SCORE_NINE,
+  ADD_SCORE_TEN,
+  ADD_SCORE_ELEVEN,
+  ADD_SCORE_TWELVE,
+  ADD_SCORE_THIRTEEN,
+  ADD_SCORE_FOURTEEN,
+  ADD_SCORE_FIFTEEN,
+  ADD_SCORE_SIXTEEN,
+  ADD_SCORE_SEVENTEEN,
+  ADD_SCORE_EIGHTEEN,
+} from "../../utils/mutations";
 import { getFragmentDefinition } from "@apollo/client/utilities";
 
 export default function Scorecard() {
   const [queryGames] = useLazyQuery(QUERY_GAMES);
   const [getMyGame] = useLazyQuery(MY_GAME);
   const [addScoreOne] = useMutation(ADD_SCORE_ONE);
+  const [addScoreTwo] = useMutation(ADD_SCORE_TWO);
+  const [addScoreThree] = useMutation(ADD_SCORE_THREE);
+  const [addScoreFour] = useMutation(ADD_SCORE_FOUR);
+  const [addScoreFive] = useMutation(ADD_SCORE_FIVE);
+  const [addScoreSix] = useMutation(ADD_SCORE_SIX);
+  const [addScoreSeven] = useMutation(ADD_SCORE_SEVEN);
+  const [addScoreEight] = useMutation(ADD_SCORE_EIGHT);
+  const [addScoreNine] = useMutation(ADD_SCORE_NINE);
+  const [addScoreTen] = useMutation(ADD_SCORE_TEN);
+  const [addScoreEleven] = useMutation(ADD_SCORE_ELEVEN);
+  const [addScoreTwelve] = useMutation(ADD_SCORE_TWELVE);
+  const [addScoreThirteen] = useMutation(ADD_SCORE_THIRTEEN);
+  const [addScoreFourteen] = useMutation(ADD_SCORE_FOURTEEN);
+  const [addScoreFifteen] = useMutation(ADD_SCORE_FIFTEEN);
+  const [addScoreSixteen] = useMutation(ADD_SCORE_SIXTEEN);
+  const [addScoreSeventeen] = useMutation(ADD_SCORE_SEVENTEEN);
+  const [addScoreEighteen] = useMutation(ADD_SCORE_EIGHTEEN);
 
   const players = [];
   const getGame = async () => {
@@ -29,30 +65,91 @@ export default function Scorecard() {
     for (let i = 0; i < game.data.getGames.players.length; i++) {
       players.push(game.data.getGames.players[i]);
     }
+    console.log(players[0].holeOne);
 
     if (players[0]) {
       setPlayer1(players[0].name);
+      setPlayer1Score(players[0].holeOne);
+      setPlayer1Score2(players[0].holeTwo);
+      setPlayer1Score3(players[0].holeThree);
+      setPlayer1Score4(players[0].holeFour);
+      setPlayer1Score5(players[0].holeFive);
+      setPlayer1Score6(players[0].holeSix);
+      setPlayer1Score7(players[0].holeSeven);
+      setPlayer1Score8(players[0].holeEight);
+      setPlayer1Score9(players[0].holeNine);
+      setPlayer1Score10(players[0].holeTen);
+      setPlayer1Score11(players[0].holeEleven);
+      setPlayer1Score12(players[0].holeTwelve);
+      setPlayer1Score13(players[0].holeThirteen);
+      setPlayer1Score14(players[0].holeFourteen);
+      setPlayer1Score15(players[0].holeFifteen);
+      setPlayer1Score16(players[0].holeSixteen);
+      setPlayer1Score17(players[0].holeSeventeen);
+      setPlayer1Score18(players[0].holeEighteen);
     }
     if (players[1]) {
       setPlayer2(players[1].name);
+      setPlayer2Score(players[1].holeOne);
+      setPlayer2Score2(players[1].holeTwo);
+      setPlayer2Score3(players[1].holeThree);
+      setPlayer2Score4(players[1].holeFour);
+      setPlayer2Score5(players[1].holeFive);
+      setPlayer2Score6(players[1].holeSix);
+      setPlayer2Score7(players[1].holeSeven);
+      setPlayer2Score8(players[1].holeEight);
+      setPlayer2Score9(players[1].holeNine);
+      setPlayer2Score10(players[1].holeTen);
+      setPlayer2Score11(players[1].holeEleven);
+      setPlayer2Score12(players[1].holeTwelve);
+      setPlayer2Score13(players[1].holeThirteen);
+      setPlayer2Score14(players[1].holeFourteen);
+      setPlayer2Score15(players[1].holeFifteen);
+      setPlayer2Score16(players[1].holeSixteen);
+      setPlayer2Score17(players[1].holeSeventeen);
+      setPlayer2Score18(players[1].holeEighteen);
     }
     if (players[2]) {
       setPlayer3(players[2].name);
+      setPlayer3Score(players[2].holeOne);
+      setPlayer3Score2(players[2].holeTwo);
+      setPlayer3Score3(players[2].holeThree);
+      setPlayer3Score4(players[2].holeFour);
+      setPlayer3Score5(players[2].holeFive);
+      setPlayer3Score6(players[2].holeSix);
+      setPlayer3Score7(players[2].holeSeven);
+      setPlayer3Score8(players[2].holeEight);
+      setPlayer3Score9(players[2].holeNine);
+      setPlayer3Score10(players[2].holeTen);
+      setPlayer3Score11(players[2].holeEleven);
+      setPlayer3Score12(players[2].holeTwelve);
+      setPlayer3Score13(players[2].holeThirteen);
+      setPlayer3Score14(players[2].holeFourteen);
+      setPlayer3Score15(players[2].holeFifteen);
+      setPlayer3Score16(players[2].holeSixteen);
+      setPlayer3Score17(players[2].holeSeventeen);
+      setPlayer3Score18(players[2].holeEighteen);
     }
     if (players[3]) {
       setPlayer4(players[3].name);
-    }
-    if (players[0]) {
-      setPlayer1Score(players[0].score);
-    }
-    if (players[1]) {
-      setPlayer2Score(players[1].score);
-    }
-    if (players[2]) {
-      setPlayer3Score(players[2].score);
-    }
-    if (players[3]) {
-      setPlayer4Score(players[3].score);
+      setPlayer4Score(players[3].holeOne);
+      setPlayer4Score2(players[3].holeTwo);
+      setPlayer4Score3(players[3].holeThree);
+      setPlayer4Score4(players[3].holeFour);
+      setPlayer4Score5(players[3].holeFive);
+      setPlayer4Score6(players[3].holeSix);
+      setPlayer4Score7(players[3].holeSeven);
+      setPlayer4Score8(players[3].holeEight);
+      setPlayer4Score9(players[3].holeNine);
+      setPlayer4Score10(players[3].holeTen);
+      setPlayer4Score11(players[3].holeEleven);
+      setPlayer4Score12(players[3].holeTwelve);
+      setPlayer4Score13(players[3].holeThirteen);
+      setPlayer4Score14(players[3].holeFourteen);
+      setPlayer4Score15(players[3].holeFifteen);
+      setPlayer4Score16(players[3].holeSixteen);
+      setPlayer4Score17(players[3].holeSeventeen);
+      setPlayer4Score18(players[3].holeEighteen);
     }
   };
 
@@ -158,12 +255,91 @@ export default function Scorecard() {
   const addHoleOne = async () => {
     const name = player1;
     const score = player1Score;
-    return await addScoreOne({
+    const playerOne = await addScoreOne({
       variables: {
         name: name,
-        score: score
-      }
+        score: score,
+      },
     });
+    if (player2) {
+      const name = player2;
+      const score = player2Score;
+      const playerTwo = await addScoreOne({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score;
+      const playerThree = await addScoreOne({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score;
+      const playerFour = await addScoreOne({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE TWO
+
+  const addHoleTwo = async () => {
+    const name = player1;
+    const score = player1Score2;
+    const playerOne = await addScoreTwo({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score2;
+      const playerTwo = await addScoreTwo({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score2;
+      const playerThree = await addScoreTwo({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score2;
+      const playerFour = await addScoreTwo({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE THREE
+
+  const addHoleThree = async () => {
+
   }
 
   return (
@@ -174,7 +350,7 @@ export default function Scorecard() {
         onChange={(e) => setPartyName(e.target.value)}
       />
       <button type="click" onClick={getGame}>
-        Get game 
+        Get game
       </button>
       <div className="gameName">
         <h1>{gamePartyName}</h1>
@@ -185,9 +361,9 @@ export default function Scorecard() {
       <div className="gameType">
         <h1>{gameMode}</h1>
       </div>
-      
+
       {/*    ----------------- HOLE ONE CARD ----------------    */}
-      
+
       <div className="hole1 scores">
         <Box>
           <div className="holeNumber">
@@ -196,7 +372,14 @@ export default function Scorecard() {
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} value={player1Score} min={0} onChange={setPlayer1Score}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                value={parseInt(player1Score)}
+                defaultValue={0}
+                min={0}
+                onChange={setPlayer1Score}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -208,7 +391,14 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                value={parseInt(player2Score)}
+                defaultValue={0}
+                min={0}
+                onChange={setPlayer2Score}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -220,7 +410,14 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                value={parseInt(player3Score)}
+                defaultValue={0}
+                min={0}
+                onChange={setPlayer3Score}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -232,7 +429,14 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                value={parseInt(player4Score)}
+                defaultValue={0}
+                min={0}
+                onChange={setPlayer4Score}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -241,21 +445,29 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
-          <button className="addScores" onClick={addHoleOne}>Save Scores</button>
+          <button className="addScores" onClick={addHoleOne}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
       {/* ----------------HOLE TWO CARD--------------- */}
 
       <div className="hole2 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 2</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score2} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                value={parseInt(player1Score2)}
+                min={0}
+                onChange={setPlayer1Score2}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -267,7 +479,13 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score2} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                value={parseInt(player2Score2)}
+                min={0}
+                onChange={setPlayer2Score2}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -279,7 +497,13 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score2} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                value={parseInt(player3Score2)}
+                min={0}
+                onChange={setPlayer3Score2}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -291,7 +515,13 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score2} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                value={parseInt(player4Score2)}
+                min={0}
+                onChange={setPlayer4Score2}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -300,20 +530,29 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleTwo}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
       {/*    ------------------ HOLE THREE CARD --------------- */}
 
       <div className="hole3 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 3</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score3} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score3}
+                min={0}
+                onChange={setPlayer1Score3}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -325,7 +564,13 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score3} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score3}
+                min={0}
+                onChange={setPlayer2Score3}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -337,7 +582,13 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score3} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score3}
+                min={0}
+                onChange={setPlayer3Score3}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -349,7 +600,13 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score3} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score3}
+                min={0}
+                onChange={setPlayer4Score3}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -364,14 +621,19 @@ export default function Scorecard() {
       {/*   --------------- HOLE FOUR CARD ----------------- */}
 
       <div className="hole4 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 4</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score4} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score4}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -383,7 +645,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score4} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score4}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -395,7 +662,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score4} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score4}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -407,7 +679,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score4} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score4}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -422,14 +699,19 @@ export default function Scorecard() {
       {/*    ---------------- HOLE FIVE CARD ---------------- */}
 
       <div className="hole5 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 5</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score5} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score5}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -441,7 +723,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score5} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score5}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -453,7 +740,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score5} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score5}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -465,7 +757,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score5} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score5}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -480,14 +777,19 @@ export default function Scorecard() {
       {/*        ------------------ HOLE SIX CARD ------------------- */}
 
       <div className="hole6 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 6</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score6} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score6}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -499,7 +801,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score6} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score6}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -511,7 +818,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score6} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score6}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -523,7 +835,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score6} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score6}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -536,16 +853,21 @@ export default function Scorecard() {
       </div>
 
       {/*      -------------- HOLE SEVEN CARD ----------------  */}
-      
+
       <div className="hole7 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 7</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score7} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score7}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -557,7 +879,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score7} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score7}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -569,7 +896,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score7} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score7}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -581,7 +913,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score7} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score7}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -596,14 +933,19 @@ export default function Scorecard() {
       {/*     ------------- HOLE EIGHT CARD ------------------ */}
 
       <div className="hole8 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 8</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score8} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score8}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -615,7 +957,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score8} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score8}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -627,7 +974,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score8} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score8}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -639,7 +991,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score8} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score8}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -654,14 +1011,19 @@ export default function Scorecard() {
       {/*      --------------- HOLE NINE CARD ----------------- */}
 
       <div className="hole9 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 9</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score9} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score9}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -673,7 +1035,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score9} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score9}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -685,7 +1052,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score9} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score9}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -697,7 +1069,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score9} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score9}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -712,14 +1089,19 @@ export default function Scorecard() {
       {/*      -------------- HOLE TEN CARD -------------- */}
 
       <div className="hole10 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 10</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score10} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score10}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -731,7 +1113,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score10} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score10}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -743,7 +1130,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score10} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score10}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -755,7 +1147,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score10} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score10}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -770,14 +1167,19 @@ export default function Scorecard() {
       {/*     --------------- HOLE ELEVEN CARD ------------ */}
 
       <div className="hole11 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 11</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score11} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score11}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -789,7 +1191,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score11} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score11}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -801,7 +1208,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score11} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score11}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -813,7 +1225,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score11} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score11}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -828,14 +1245,19 @@ export default function Scorecard() {
       {/*       ------------------- HOLE TWELVE CARD ------------------ */}
 
       <div className="hole12 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 12</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score12} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score12}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -847,7 +1269,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score12} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score12}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -859,7 +1286,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score12} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score12}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -871,7 +1303,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score12} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score12}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -886,14 +1323,19 @@ export default function Scorecard() {
       {/*     ----------------- HOLE THIRTEEN CARD ------------      */}
 
       <div className="hole13 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 13</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score13} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score13}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -905,7 +1347,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score13} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score13}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -917,7 +1364,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score13} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score13}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -929,7 +1381,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score13} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score13}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -944,14 +1401,19 @@ export default function Scorecard() {
       {/*      -------------------  HOLE FOURTEEN CARD --------------------       */}
 
       <div className="hole14 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 14</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score14} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score14}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -963,7 +1425,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score14} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score14}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -975,7 +1442,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score14} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score14}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -987,7 +1459,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score14} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score14}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1002,14 +1479,19 @@ export default function Scorecard() {
       {/*     ----------------- HOLE FIFTEEN CARD ---------------------      */}
 
       <div className="hole15 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 15</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score15} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score15}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1021,7 +1503,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score15} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score15}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1033,7 +1520,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score15} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score15}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1045,7 +1537,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score15} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score15}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1060,14 +1557,19 @@ export default function Scorecard() {
       {/*     ------------------ HOLE SIXTEEN CARD ----------------     */}
 
       <div className="hole16 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 16</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score16} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score16}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1079,7 +1581,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score16} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score16}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1091,7 +1598,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score16} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score16}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1103,7 +1615,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score16} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score16}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1118,14 +1635,19 @@ export default function Scorecard() {
       {/*     --------------- HOLE SEVENTEEN CARD -------------    */}
 
       <div className="hole17 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 17</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score17} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score17}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1137,7 +1659,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score17} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score17}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1149,7 +1676,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score17} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score17}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1161,7 +1693,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score17} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score17}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1176,14 +1713,19 @@ export default function Scorecard() {
       {/*     ------------------ HOLE EIGHTEEN CARD ----------------    */}
 
       <div className="hole18 scores">
-      <Box>
+        <Box>
           <div className="holeNumber">
             <h1>Hole 18</h1>
           </div>
           <div className="player1">
             <h1>
               Player 1:{player1} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player1Score18} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player1Score18}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1195,7 +1737,12 @@ export default function Scorecard() {
           <div className="player2">
             <h1>
               Player 2:{player2} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player2Score18} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player2Score18}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1207,7 +1754,12 @@ export default function Scorecard() {
           <div className="player3">
             <h1>
               Player 3:{player3} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player3Score18} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player3Score18}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -1219,7 +1771,12 @@ export default function Scorecard() {
           <div className="player4">
             <h1>
               Player 4:{player4} Score:
-              <NumberInput size="sm" maxW={20} defaultValue={player4Score18} min={0}>
+              <NumberInput
+                size="sm"
+                maxW={20}
+                defaultValue={player4Score18}
+                min={0}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
