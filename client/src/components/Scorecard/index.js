@@ -339,8 +339,690 @@ export default function Scorecard() {
   // ADD HOLE THREE
 
   const addHoleThree = async () => {
+    const name = player1;
+    const score = player1Score3;
+    const playerOne = await addScoreThree({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score3;
+      const playerTwo = await addScoreThree({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score3;
+      const playerThree = await addScoreThree({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score3;
+      const playerFour = await addScoreThree({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
 
-  }
+  // ADD HOLE FOUR
+
+  const addHoleFour = async () => {
+    const name = player1;
+    const score = player1Score4;
+    const playerOne = await addScoreFour({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score4;
+      const playerTwo = await addScoreFour({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score4;
+      const playerThree = await addScoreFour({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score4;
+      const playerFour = await addScoreFour({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE FIVE
+
+  const addHoleFive = async () => {
+    const name = player1;
+    const score = player1Score5;
+    const playerOne = await addScoreFive({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score5;
+      const playerTwo = await addScoreFive({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score5;
+      const playerThree = await addScoreFive({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score5;
+      const playerFour = await addScoreFive({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE SIX
+
+  const addHoleSix = async () => {
+    const name = player1;
+    const score = player1Score6;
+    const playerOne = await addScoreSix({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score6;
+      const playerTwo = await addScoreSix({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score6;
+      const playerThree = await addScoreSix({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score6;
+      const playerFour = await addScoreSix({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE SEVEN
+
+  const addHoleSeven = async () => {
+    const name = player1;
+    const score = player1Score7;
+    const playerOne = await addScoreSeven({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score7;
+      const playerTwo = await addScoreSeven({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score7;
+      const playerThree = await addScoreSeven({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score7;
+      const playerFour = await addScoreSeven({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE EIGHT
+
+  const addHoleEight = async () => {
+    const name = player1;
+    const score = player1Score8;
+    const playerOne = await addScoreEight({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score8;
+      const playerTwo = await addScoreEight({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score8;
+      const playerThree = await addScoreEight({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score8;
+      const playerFour = await addScoreEight({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE NINE
+
+  const addHoleNine = async () => {
+    const name = player1;
+    const score = player1Score9;
+    const playerOne = await addScoreNine({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score9;
+      const playerTwo = await addScoreNine({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score9;
+      const playerThree = await addScoreNine({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score9;
+      const playerFour = await addScoreNine({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE TEN
+
+  const addHoleTen = async () => {
+    const name = player1;
+    const score = player1Score10;
+    const playerOne = await addScoreTen({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score10;
+      const playerTwo = await addScoreTen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score10;
+      const playerThree = await addScoreTen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score10;
+      const playerFour = await addScoreTen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE ELEVEN
+
+  const addHoleEleven = async () => {
+    const name = player1;
+    const score = player1Score11;
+    const playerOne = await addScoreEleven({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score11;
+      const playerTwo = await addScoreEleven({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score11;
+      const playerThree = await addScoreEleven({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score11;
+      const playerFour = await addScoreEleven({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE TWELVE
+
+  const addHoleTwelve = async () => {
+    const name = player1;
+    const score = player1Score12;
+    const playerOne = await addScoreTwelve({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score12;
+      const playerTwo = await addScoreTwelve({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score12;
+      const playerThree = await addScoreTwelve({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score12;
+      const playerFour = await addScoreTwelve({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE THIRTEEN
+
+  const addHoleThirteen = async () => {
+    const name = player1;
+    const score = player1Score13;
+    const playerOne = await addScoreThirteen({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score13;
+      const playerTwo = await addScoreThirteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score13;
+      const playerThree = await addScoreThirteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score13;
+      const playerFour = await addScoreThirteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE FOURTEEN
+
+  const addHoleFourteen = async () => {
+    const name = player1;
+    const score = player1Score14;
+    const playerOne = await addScoreFourteen({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score14;
+      const playerTwo = await addScoreFourteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score14;
+      const playerThree = await addScoreFourteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score14;
+      const playerFour = await addScoreFourteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE FIFTEEN
+
+  const addHoleFifteen = async () => {
+    const name = player1;
+    const score = player1Score15;
+    const playerOne = await addScoreFifteen({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score15;
+      const playerTwo = await addScoreFifteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score15;
+      const playerThree = await addScoreFifteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score15;
+      const playerFour = await addScoreFifteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE SIXTEEN
+
+  const addHoleSixteen = async () => {
+    const name = player1;
+    const score = player1Score16;
+    const playerOne = await addScoreSixteen({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score16;
+      const playerTwo = await addScoreSixteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score16;
+      const playerThree = await addScoreSixteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score16;
+      const playerFour = await addScoreSixteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE SEVENTEEN
+
+  const addHoleSeventeen = async () => {
+    const name = player1;
+    const score = player1Score17;
+    const playerOne = await addScoreSeventeen({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score17;
+      const playerTwo = await addScoreSeventeen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score17;
+      const playerThree = await addScoreSeventeen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score17;
+      const playerFour = await addScoreSeventeen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
+
+  // ADD HOLE EIGHTEEN
+
+  const addHoleEighteen = async () => {
+    const name = player1;
+    const score = player1Score18;
+    const playerOne = await addScoreEighteen({
+      variables: {
+        name: name,
+        score: score,
+      },
+    });
+    if (player2) {
+      const name = player2;
+      const score = player2Score18;
+      const playerTwo = await addScoreEighteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player3) {
+      const name = player3;
+      const score = player3Score18;
+      const playerThree = await addScoreEighteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+    if (player4) {
+      const name = player4;
+      const score = player4Score18;
+      const playerFour = await addScoreEighteen({
+        variables: {
+          name: name,
+          score: score,
+        },
+      });
+    }
+  };
 
   return (
     <>
@@ -549,7 +1231,7 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score3}
+                value={parseInt(player1Score3)}
                 min={0}
                 onChange={setPlayer1Score3}
               >
@@ -567,7 +1249,7 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score3}
+                value={parseInt(player2Score3)}
                 min={0}
                 onChange={setPlayer2Score3}
               >
@@ -585,7 +1267,7 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score3}
+                value={parseInt(player3Score3)}
                 min={0}
                 onChange={setPlayer3Score3}
               >
@@ -603,7 +1285,7 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score3}
+                value={parseInt(player4Score3)}
                 min={0}
                 onChange={setPlayer4Score3}
               >
@@ -615,6 +1297,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleThree}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -631,8 +1316,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score4}
+                value={parseInt(player1Score4)}
                 min={0}
+                onChange={setPlayer1Score4}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -648,8 +1334,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score4}
+                value={parseInt(player2Score4)}
                 min={0}
+                onChange={setPlayer2Score4}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -665,8 +1352,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score4}
+                value={parseInt(player3Score4)}
                 min={0}
+                onChange={setPlayer3Score4}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -682,8 +1370,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score4}
+                value={parseInt(player4Score4)}
                 min={0}
+                onChange={setPlayer4Score4}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -693,6 +1382,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleFour}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -709,8 +1401,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score5}
+                value={parseInt(player1Score5)}
                 min={0}
+                onChange={setPlayer1Score5}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -726,8 +1419,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score5}
+                value={parseInt(player2Score5)}
                 min={0}
+                onChange={setPlayer2Score5}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -743,8 +1437,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score5}
+                value={parseInt(player3Score5)}
                 min={0}
+                onChange={setPlayer3Score5}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -760,8 +1455,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score5}
+                value={parseInt(player4Score5)}
                 min={0}
+                onChange={setPlayer4Score5}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -771,6 +1467,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleFive}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -787,8 +1486,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score6}
+                value={parseInt(player1Score6)}
                 min={0}
+                onChange={setPlayer1Score6}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -804,8 +1504,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score6}
+                value={parseInt(player2Score6)}
                 min={0}
+                onChange={setPlayer2Score6}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -821,8 +1522,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score6}
+                value={parseInt(player3Score6)}
                 min={0}
+                onChange={setPlayer3Score6}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -838,8 +1540,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score6}
+                value={parseInt(player4Score6)}
                 min={0}
+                onChange={setPlayer4Score6}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -849,6 +1552,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleSix}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -865,8 +1571,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score7}
+                value={parseInt(player1Score7)}
                 min={0}
+                onChange={setPlayer1Score7}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -882,8 +1589,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score7}
+                value={parseInt(player2Score7)}
                 min={0}
+                onChange={setPlayer2Score7}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -899,8 +1607,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score7}
+                value={parseInt(player3Score7)}
                 min={0}
+                onChange={setPlayer3Score7}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -916,8 +1625,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score7}
+                value={parseInt(player4Score7)}
                 min={0}
+                onChange={setPlayer4Score7}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -927,6 +1637,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleSeven}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -943,8 +1656,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score8}
+                value={parseInt(player1Score8)}
                 min={0}
+                onChange={setPlayer1Score8}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -960,8 +1674,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score8}
+                value={parseInt(player2Score8)}
                 min={0}
+                onChange={setPlayer2Score8}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -977,8 +1692,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score8}
+                value={parseInt(player3Score8)}
                 min={0}
+                onChange={setPlayer3Score8}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -994,8 +1710,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score8}
+                value={parseInt(player4Score8)}
                 min={0}
+                onChange={setPlayer4Score8}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1005,6 +1722,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleEight}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -1021,8 +1741,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score9}
+                value={parseInt(player1Score9)}
                 min={0}
+                onChange={setPlayer1Score9}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1038,8 +1759,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score9}
+                value={parseInt(player2Score9)}
                 min={0}
+                onChange={setPlayer2Score9}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1055,8 +1777,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score9}
+                value={parseInt(player3Score9)}
                 min={0}
+                onChange={setPlayer3Score9}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1072,8 +1795,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score9}
+                value={parseInt(player4Score9)}
                 min={0}
+                onChange={setPlayer4Score9}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1083,6 +1807,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleNine}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -1099,8 +1826,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score10}
+                value={parseInt(player1Score10)}
                 min={0}
+                onChange={setPlayer1Score10}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1116,8 +1844,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score10}
+                value={parseInt(player2Score10)}
                 min={0}
+                onChange={setPlayer2Score10}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1133,8 +1862,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score10}
+                value={parseInt(player3Score10)}
                 min={0}
+                onChange={setPlayer3Score10}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1150,8 +1880,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score10}
+                value={parseInt(player4Score10)}
                 min={0}
+                onChange={setPlayer4Score10}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1161,6 +1892,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleTen}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -1177,8 +1911,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score11}
+                value={parseInt(player1Score11)}
                 min={0}
+                onChange={setPlayer1Score11}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1194,8 +1929,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score11}
+                value={parseInt(player2Score11)}
                 min={0}
+                onChange={setPlayer2Score11}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1211,8 +1947,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score11}
+                value={parseInt(player3Score11)}
                 min={0}
+                onChange={setPlayer3Score11}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1228,8 +1965,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score11}
+                value={parseInt(player4Score11)}
                 min={0}
+                onChange={setPlayer4Score11}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1239,6 +1977,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleEleven}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -1255,8 +1996,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score12}
+                value={parseInt(player1Score12)}
                 min={0}
+                onChange={setPlayer1Score12}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1272,8 +2014,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score12}
+                value={parseInt(player2Score12)}
                 min={0}
+                onChange={setPlayer2Score12}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1289,8 +2032,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score12}
+                value={parseInt(player3Score12)}
                 min={0}
+                onChange={setPlayer3Score12}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1306,8 +2050,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score12}
+                value={parseInt(player4Score12)}
                 min={0}
+                onChange={setPlayer4Score12}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1317,6 +2062,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleTwelve}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -1333,8 +2081,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score13}
+                value={parseInt(player1Score13)}
                 min={0}
+                onChange={setPlayer1Score13}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1350,8 +2099,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score13}
+                value={parseInt(player2Score13)}
                 min={0}
+                onChange={setPlayer2Score13}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1367,8 +2117,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score13}
+                value={parseInt(player3Score13)}
                 min={0}
+                onChange={setPlayer3Score13}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1384,8 +2135,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score13}
+                value={parseInt(player4Score13)}
                 min={0}
+                onChange={setPlayer4Score13}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1395,6 +2147,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleThirteen}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -1411,8 +2166,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score14}
+                value={parseInt(player1Score14)}
                 min={0}
+                onChange={setPlayer1Score14}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1428,8 +2184,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score14}
+                value={parseInt(player2Score14)}
                 min={0}
+                onChange={setPlayer2Score14}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1445,8 +2202,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score14}
+                value={parseInt(player3Score14)}
                 min={0}
+                onChange={setPlayer3Score14}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1462,8 +2220,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score14}
+                value={parseInt(player4Score14)}
                 min={0}
+                onChange={setPlayer4Score14}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1473,6 +2232,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleFourteen}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -1489,8 +2251,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score15}
+                value={parseInt(player1Score15)}
                 min={0}
+                onChange={setPlayer1Score15}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1506,8 +2269,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score15}
+                value={parseInt(player2Score15)}
                 min={0}
+                onChange={setPlayer2Score15}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1523,8 +2287,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score15}
+                value={parseInt(player3Score15)}
                 min={0}
+                onChange={setPlayer3Score15}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1540,8 +2305,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score15}
+                value={parseInt(player4Score15)}
                 min={0}
+                onChange={setPlayer4Score15}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1551,6 +2317,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleFifteen}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -1567,8 +2336,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score16}
+                value={parseInt(player1Score16)}
                 min={0}
+                onChange={setPlayer1Score16}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1584,8 +2354,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score16}
+                value={parseInt(player2Score16)}
                 min={0}
+                onChange={setPlayer2Score16}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1601,8 +2372,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score16}
+                value={parseInt(player3Score16)}
                 min={0}
+                onChange={setPlayer3Score16}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1618,8 +2390,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score16}
+                value={parseInt(player4Score16)}
                 min={0}
+                onChange={setPlayer4Score16}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1629,6 +2402,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleSixteen}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -1645,8 +2421,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score17}
+                value={parseInt(player1Score17)}
                 min={0}
+                onChange={setPlayer1Score17}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1662,8 +2439,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score17}
+                value={parseInt(player2Score17)}
                 min={0}
+                onChange={setPlayer2Score17}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1679,8 +2457,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score17}
+                value={parseInt(player3Score17)}
                 min={0}
+                onChange={setPlayer3Score17}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1696,8 +2475,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score17}
+                value={parseInt(player4Score17)}
                 min={0}
+                onChange={setPlayer4Score17}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1707,6 +2487,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleSeventeen}>
+            Save Scores
+          </button>
         </Box>
       </div>
 
@@ -1723,8 +2506,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player1Score18}
+                value={parseInt(player1Score18)}
                 min={0}
+                onChange={setPlayer1Score18}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1740,8 +2524,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player2Score18}
+                value={parseInt(player2Score18)}
                 min={0}
+                onChange={setPlayer2Score18}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1757,8 +2542,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player3Score18}
+                value={parseInt(player3Score18)}
                 min={0}
+                onChange={setPlayer3Score18}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1774,8 +2560,9 @@ export default function Scorecard() {
               <NumberInput
                 size="sm"
                 maxW={20}
-                defaultValue={player4Score18}
+                value={parseInt(player4Score18)}
                 min={0}
+                onChange={setPlayer4Score18}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -1785,6 +2572,9 @@ export default function Scorecard() {
               </NumberInput>
             </h1>
           </div>
+          <button className="addScores" onClick={addHoleEighteen}>
+            Save Scores
+          </button>
         </Box>
       </div>
     </>
