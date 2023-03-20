@@ -23,12 +23,12 @@ const gameSchema = new Schema({
         required: false,
         min: 0,
     },
-    players: 
+    players: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Player'
         }
-    
+    ]
 });
 
 const Game = mongoose.model('Game', gameSchema);
