@@ -15,7 +15,7 @@ const playerSchema = new Schema({
         trim: true,
     },
     holeOne: {
-        type: String,
+        type: Number,
         required: false,
         min: 0,
         trim: true,
