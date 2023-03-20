@@ -52,7 +52,7 @@ export default function Homepage() {
     <>
       {auth.loggedIn() ? (
         <>
-          <Button className="createGameBtn" onClick={onOpen}>
+          <Button className="createGameBtn" onClick={onOpen} >
             Create New Game
           </Button>
           <Modal isOpen={isOpen} onClose={onClose}>

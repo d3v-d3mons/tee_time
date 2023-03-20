@@ -3,6 +3,6 @@ import { Box } from "@chakra-ui/react";
 
 export default function OurStory () {
     return (
-        <Box>This is the our story section of the app</Box>
+        <Box className="ourStory">This is the our story section of the app</Box>
     )
 };
