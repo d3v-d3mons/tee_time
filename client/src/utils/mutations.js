@@ -77,171 +77,154 @@ mutation addScore1($name: String!, $score: String!) {
 `;
 
 export const ADD_SCORE_TWO = gql`
-mutation addScore2($_id: ID!) {
-  addScore2(_id: $_id) {
+mutation addScore2($name: String!, $score: String!) {
+  addScore2(name: $name, score: $score) {
     name
     holeTwo
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_THREE = gql`
-mutation addScore3($_id: ID!) {
-  addScore3(_id: $_id) {
+mutation addScore3($name: String!, $score: String!) {
+  addScore3(name: $name, score: $score) {
     name
     holeThree
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_FOUR = gql`
-mutation addScore4($_id: ID!) {
-  addScore4(_id: $_id) {
+mutation addScore4($name: String!, $score: String!) {
+  addScore4(name: $name, score: $score) {
     name
     holeFour
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_FIVE = gql`
-mutation addScore5($_id: ID!) {
-  addScore5(_id: $_id) {
+mutation addScore5($name: String!, $score: String!) {
+  addScore5(name: $name, score: $score) {
     name
     holeFive
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_SIX = gql`
-mutation addScore6($_id: ID!) {
-  addScore6(_id: $_id) {
+mutation addScore6($name: String!, $score: String!) {
+  addScore6(name: $name, score: $score) {
     name
     holeSix
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_SEVEN = gql`
-mutation addScore7($_id: ID!) {
-  addScore7(_id: $_id) {
+mutation addScore7($name: String!, $score: String!) {
+  addScore7(name: $name, score: $score) {
     name
     holeSeven
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_EIGHT = gql`
-mutation addScore8($_id: ID!) {
-  addScore8(_id: $_id) {
+mutation addScore8($name: String!, $score: String!) {
+  addScore8(name: $name, score: $score) {
     name
     holeEight
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_NINE = gql`
-mutation addScore9($_id: ID!) {
-  addScore9(_id: $_id) {
+mutation addScore9($name: String!, $score: String!) {
+  addScore9(name: $name, score: $score) {
     name
     holeNine
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_TEN = gql`
-mutation addScore10($_id: ID!) {
-  addScore10(_id: $_id) {
+mutation addScore10($name: String!, $score: String!) {
+  addScore10(name: $name, score: $score) {
     name
     holeTen
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_ELEVEN = gql`
-mutation addScore11($_id: ID!) {
-  addScore11(_id: $_id) {
+mutation addScore11($name: String!, $score: String!) {
+  addScore11(name: $name, score: $score) {
     name
     holeEleven
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_TWELVE = gql`
-mutation addScore12($_id: ID!) {
-  addScore12(_id: $_id) {
+mutation addScore12($name: String!, $score: String!) {
+  addScore12(name: $name, score: $score) {
     name
     holeTwelve
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_THIRTEEN = gql`
-mutation addScore13($_id: ID!) {
-  addScore13(_id: $_id) {
+mutation addScore13($name: String!, $score: String!) {
+  addScore13(name: $name, score: $score) {
     name
     holeThirteen
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_FOURTEEN = gql`
-mutation addScore14($_id: ID!) {
-  addScore14(_id: $_id) {
+mutation addScore14($name: String!, $score: String!) {
+  addScore14(name: $name, score: $score) {
     name
     holeFourteen
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_FIFTEEN = gql`
-mutation addScore15($_id: ID!) {
-  addScore15(_id: $_id) {
+mutation addScore15($name: String!, $score: String!) {
+  addScore15(name: $name, score: $score) {
     name
     holeFifteen
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_SIXTEEN = gql`
-mutation addScore16($_id: ID!) {
-  addScore16(_id: $_id) {
+mutation addScore16($name: String!, $score: String!) {
+  addScore16(name: $name, score: $score) {
     name
     holeSixteen
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_SEVENTEEN = gql`
-mutation addScore17($_id: ID!) {
-  addScore17(_id: $_id) {
+mutation addScore17($name: String!, $score: String!) {
+  addScore17(name: $name, score: $score) {
     name
     holeSeventeen
-    _id
   }
 }
 `;
 
 export const ADD_SCORE_EIGHTEEN = gql`
-mutation addScore18($_id: ID!) {
-  addScore18(_id: $_id) {
+mutation addScore18($name: String!, $score: String!) {
+  addScore18(name: $name, score: $score) {
     name
     holeEighteen
-    _id
   }
 }
 `;

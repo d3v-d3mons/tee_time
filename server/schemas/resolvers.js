@@ -90,126 +90,126 @@ const resolvers = {
             );
             return player;
         },
-        addScore2: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeTwo: score }}
-            )
+        addScore2: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeTwo: score }}
+            );
             return player;
         },
-        addScore3: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeThree: score }}
-            )
+        addScore3: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeThree: score }}
+            );
             return player;
         },
-        addScore4: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeFour: score }}
-            )
+        addScore4: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeFour: score }}
+            );
             return player;
         },
-        addScore5: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeFive: score }}
-            )
+        addScore5: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeFive: score }}
+            );
             return player;
         },
-        addScore6: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeSix: score }}
-            )
+        addScore6: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeSix: score }}
+            );
             return player;
         },
-        addScore7: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeSeven: score }}
-            )
+        addScore7: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeSeven: score }}
+            );
             return player;
         },
-        addScore8: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeEight: score }}
-            )
+        addScore8: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeEight: score }}
+            );
             return player;
         },
-        addScore9: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeNine: score }}
-            )
+        addScore9: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeNine: score }}
+            );
             return player;
         },
-        addScore10: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeTen: score }}
-            )
+        addScore10: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeTen: score }}
+            );
             return player;
         },
-        addScore11: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeEleven: score }}
-            )
+        addScore11: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeEleven: score }}
+            );
             return player;
         },
-        addScore12: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeTwelve: score }}
-            )
+        addScore12: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeTwelve: score }}
+            );
             return player;
         },
-        addScore13: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeThirteen: score }}
-            )
+        addScore13: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeThirteen: score }}
+            );
             return player;
         },
-        addScore14: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeFourteen: score }}
-            )
+        addScore14: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeFourteen: score }}
+            );
             return player;
         },
-        addScore15: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeFifteen: score }}
-            )
+        addScore15: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeFifteen: score }}
+            );
             return player;
         },
-        addScore16: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeSixteen: score }}
-            )
+        addScore16: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeSixteen: score }}
+            );
             return player;
         },
-        addScore17: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeSeventeen: score }}
-            )
+        addScore17: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeSeventeen: score }}
+            );
             return player;
         },
-        addScore18: async (parent, _id, score) => {
-            const player = await Player.findByIdAndUpdate(
-                { _id: _id },
-                { $push: { holeEighteen: score }}
-            )
+        addScore18: async (parent,{ name, score }) => {
+            const player = await Player.findOneAndUpdate(
+                { name: name },
+                { $set: { holeEighteen: score }}
+            );
             return player;
-        }
-    }
+        },
+    },
 };
 
 module.exports = resolvers;

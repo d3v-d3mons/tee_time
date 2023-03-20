@@ -30,6 +30,24 @@ export const QUERY_GAMES = gql`
             players {
                 name
                 score
+                holeOne 
+                holeTwo
+                holeThree
+                holeFour
+                holeFive
+                holeSix
+                holeSeven
+                holeEight
+                holeNine
+                holeTen
+                holeEleven
+                holeTwelve
+                holeThirteen
+                holeFourteen
+                holeFifteen
+                holeSixteen
+                holeSeventeen
+                holeEighteen
             }
         }
     }
@@ -59,6 +77,24 @@ export const MY_GAME = gql`
         players {
             name
             score
+            holeOne
+            holeTwo
+            holeThree
+            holeFour
+            holeFive
+            holeSix
+            holeSeven
+            holeEight
+            holeNine
+            holeTen
+            holeEleven
+            holeTwelve
+            holeThirteen
+            holeFourteen
+            holeFifteen
+            holeSixteen
+            holeSeventeen
+            holeEighteen
         }
     }
  }
