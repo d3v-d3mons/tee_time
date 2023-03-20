@@ -11,13 +11,10 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_PLAYERS = gql`
-    query getPlayers($name: String) {
-        getPlayers(name: $name) {
+    query getPlayers($_id: ID!) {
+        getPlayers(_id: $_id) {
             _id
             name
-            handGrenades
-            mulligans
-            handicap
             score
         }
     }
