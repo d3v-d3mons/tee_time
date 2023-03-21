@@ -114,7 +114,7 @@ export default function NewPlayer() {
     return (
       <Center>
         <Button className="scorecardDirect">
-          <Link to="/scorecard"></Link>
+          <Link to="/scorecard">Scorecard</Link>
         </Button>
       </Center>
     );

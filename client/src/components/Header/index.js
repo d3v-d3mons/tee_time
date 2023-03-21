@@ -168,7 +168,7 @@ export default function Header() {
                       <Input
                         value={passwordLogin}
                         onChange={(e) => setPasswordLogin(e.target.value)}
-                        type="text"
+                        type="password"
                         className="loginPassword"
                         placeholder="enter password here"
                       />

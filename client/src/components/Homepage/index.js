@@ -129,7 +129,7 @@ export default function Homepage() {
   } else {
     return (
       <Center>
-        <Button>
+        <Button className="newPlayerBtn">
           <Link to="/newplayer">Add Players</Link>
         </Button>
       </Center>
