@@ -1,3 +1,5 @@
+# Tee Time
+
 Tee Time is an app for the amatuer golfer. Anyone who wants a clean and simple scorecard to track a weekend game with their buddies ca do so with this free, straightforward, and intuitive app. Simply sign up, create a game, and you're all set!
 
 
