@@ -9,7 +9,7 @@ export default function OurStory() {
       of the common golfer. While other apps are tailored to the most elite
       range of golfers, Tee Time is more suited for the weekend warrior who just
       wants to keep track of their games without the hassle of keeping track of
-      a scorecard.{" "}
+      a scorecard.
     </Box>
   );
 }

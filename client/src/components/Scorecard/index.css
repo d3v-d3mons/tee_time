@@ -46,7 +46,8 @@
     border-radius: .7rem;
     width: 70%;
     text-align: center;
-    margin-right: 50%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .scorecardPartySearch {
