@@ -1070,7 +1070,7 @@ export default function Scorecard() {
                   className="player1Score"
                   size="sm"
                   maxW={20}
-                  value={parseInt(player1Score)}
+                  value={player1Score ? parseInt(player1Score) : 0}
                   defaultValue={0}
                   min={0}
                   onChange={setPlayer1Score}
@@ -1091,7 +1091,7 @@ export default function Scorecard() {
                   className="player2Score"
                   size="sm"
                   maxW={20}
-                  value={parseInt(player2Score)}
+                  value={player2Score ? parseInt(player2Score) : 0}
                   defaultValue={0}
                   min={0}
                   onChange={setPlayer2Score}
@@ -1112,7 +1112,7 @@ export default function Scorecard() {
                   className="player3Score"
                   size="sm"
                   maxW={20}
-                  value={parseInt(player3Score)}
+                  value={player3Score ? parseInt(player3Score) : 0}
                   defaultValue={0}
                   min={0}
                   onChange={setPlayer3Score}
@@ -1133,7 +1133,7 @@ export default function Scorecard() {
                   className="player4Score"
                   size="sm"
                   maxW={20}
-                  value={parseInt(player4Score)}
+                  value={player4Score ? parseInt(player4Score) : 0}
                   defaultValue={0}
                   min={0}
                   onChange={setPlayer4Score}
@@ -1168,7 +1168,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score2)}
+                value={player1Score2 ? parseInt(player1Score2) : 0}
                 min={0}
                 onChange={setPlayer1Score2}
               >
@@ -1188,7 +1188,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score2)}
+                value={player2Score2 ? parseInt(player2Score2) : 0}
                 min={0}
                 onChange={setPlayer2Score2}
               >
@@ -1208,7 +1208,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score2)}
+                value={player3Score2 ? parseInt(player3Score2) : 0}
                 min={0}
                 onChange={setPlayer3Score2}
               >
@@ -1228,7 +1228,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score2)}
+                value={player4Score2 ? parseInt(player4Score2) : 0}
                 min={0}
                 onChange={setPlayer4Score2}
               >
@@ -1261,7 +1261,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score3)}
+                value={player1Score3 ? parseInt(player1Score3) : 0}
                 min={0}
                 onChange={setPlayer1Score3}
               >
@@ -1281,7 +1281,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score3)}
+                value={player2Score3 ? parseInt(player2Score3) : 0}
                 min={0}
                 onChange={setPlayer2Score3}
               >
@@ -1301,7 +1301,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score3)}
+                value={player3Score3 ? parseInt(player3Score3) : 0}
                 min={0}
                 onChange={setPlayer3Score3}
               >
@@ -1321,7 +1321,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score3)}
+                value={player4Score3 ? parseInt(player4Score3) : 0}
                 min={0}
                 onChange={setPlayer4Score3}
               >
@@ -1354,7 +1354,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score4)}
+                value={player1Score4 ? parseInt(player1Score4) : 0}
                 min={0}
                 onChange={setPlayer1Score4}
               >
@@ -1374,7 +1374,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score4)}
+                value={player2Score4 ? parseInt(player2Score4) : 0}
                 min={0}
                 onChange={setPlayer2Score4}
               >
@@ -1394,7 +1394,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score4)}
+                value={player3Score4 ? parseInt(player3Score4) : 0}
                 min={0}
                 onChange={setPlayer3Score4}
               >
@@ -1414,7 +1414,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score4)}
+                value={player4Score4 ? parseInt(player4Score4) : 0}
                 min={0}
                 onChange={setPlayer4Score4}
               >
@@ -1447,7 +1447,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score5)}
+                value={player1Score5 ? parseInt(player1Score5) : 0}
                 min={0}
                 onChange={setPlayer1Score5}
               >
@@ -1467,7 +1467,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score5)}
+                value={player2Score5 ? parseInt(player2Score5) : 0}
                 min={0}
                 onChange={setPlayer2Score5}
               >
@@ -1487,7 +1487,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score5)}
+                value={player3Score5 ? parseInt(player3Score5) : 0}
                 min={0}
                 onChange={setPlayer3Score5}
               >
@@ -1507,7 +1507,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score5)}
+                value={player4Score5 ? parseInt(player4Score5) : 0}
                 min={0}
                 onChange={setPlayer4Score5}
               >
@@ -1540,7 +1540,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score6)}
+                value={player1Score6 ? parseInt(player1Score6) : 0}
                 min={0}
                 onChange={setPlayer1Score6}
               >
@@ -1560,7 +1560,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score6)}
+                value={player2Score6 ? parseInt(player2Score6) : 0}
                 min={0}
                 onChange={setPlayer2Score6}
               >
@@ -1580,7 +1580,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score6)}
+                value={player3Score6 ? parseInt(player3Score6) : 0}
                 min={0}
                 onChange={setPlayer3Score6}
               >
@@ -1600,7 +1600,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score6)}
+                value={player4Score6 ? parseInt(player4Score6) : 0}
                 min={0}
                 onChange={setPlayer4Score6}
               >
@@ -1633,7 +1633,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score7)}
+                value={player1Score7 ? parseInt(player1Score7) : 0}
                 min={0}
                 onChange={setPlayer1Score7}
               >
@@ -1653,7 +1653,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score7)}
+                value={player2Score7 ? parseInt(player2Score7) : 0}
                 min={0}
                 onChange={setPlayer2Score7}
               >
@@ -1673,7 +1673,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score7)}
+                value={player3Score7 ? parseInt(player3Score7) : 0}
                 min={0}
                 onChange={setPlayer3Score7}
               >
@@ -1693,7 +1693,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score7)}
+                value={player4Score7 ? parseInt(player4Score7) : 0}
                 min={0}
                 onChange={setPlayer4Score7}
               >
@@ -1726,7 +1726,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score8)}
+                value={player1Score8 ? parseInt(player1Score8) : 0}
                 min={0}
                 onChange={setPlayer1Score8}
               >
@@ -1746,7 +1746,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score8)}
+                value={player2Score8 ? parseInt(player2Score8) : 0}
                 min={0}
                 onChange={setPlayer2Score8}
               >
@@ -1766,7 +1766,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score8)}
+                value={player3Score8 ? parseInt(player3Score8) : 0}
                 min={0}
                 onChange={setPlayer3Score8}
               >
@@ -1786,7 +1786,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score8)}
+                value={player4Score8 ? parseInt(player4Score8) : 0}
                 min={0}
                 onChange={setPlayer4Score8}
               >
@@ -1819,7 +1819,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score9)}
+                value={player1Score9 ? parseInt(player1Score9) : 0}
                 min={0}
                 onChange={setPlayer1Score9}
               >
@@ -1839,7 +1839,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score9)}
+                value={player2Score9 ? parseInt(player2Score9) : 0}
                 min={0}
                 onChange={setPlayer2Score9}
               >
@@ -1859,7 +1859,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score9)}
+                value={player3Score9 ? parseInt(player3Score9) : 0}
                 min={0}
                 onChange={setPlayer3Score9}
               >
@@ -1879,7 +1879,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score9)}
+                value={player4Score9 ? parseInt(player4Score9) : 0}
                 min={0}
                 onChange={setPlayer4Score9}
               >
@@ -1912,7 +1912,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score10)}
+                value={player1Score10 ? parseInt(player1Score10) : 0}
                 min={0}
                 onChange={setPlayer1Score10}
               >
@@ -1932,7 +1932,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score10)}
+                value={player2Score10 ? parseInt(player2Score10) : 0}
                 min={0}
                 onChange={setPlayer2Score10}
               >
@@ -1952,7 +1952,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score10)}
+                value={player3Score10 ? parseInt(player3Score10) : 0}
                 min={0}
                 onChange={setPlayer3Score10}
               >
@@ -1972,7 +1972,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score10)}
+                value={player4Score10 ? parseInt(player4Score10) : 0}
                 min={0}
                 onChange={setPlayer4Score10}
               >
@@ -2005,7 +2005,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score11)}
+                value={player1Score11 ? parseInt(player1Score11) : 0}
                 min={0}
                 onChange={setPlayer1Score11}
               >
@@ -2025,7 +2025,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score11)}
+                value={player2Score11 ? parseInt(player2Score11) : 0}
                 min={0}
                 onChange={setPlayer2Score11}
               >
@@ -2045,7 +2045,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score11)}
+                value={player3Score11 ? parseInt(player3Score11) : 0}
                 min={0}
                 onChange={setPlayer3Score11}
               >
@@ -2065,7 +2065,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score11)}
+                value={player4Score11 ? parseInt(player4Score11) : 0}
                 min={0}
                 onChange={setPlayer4Score11}
               >
@@ -2098,7 +2098,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score12)}
+                value={player1Score12 ? parseInt(player1Score12) : 0}
                 min={0}
                 onChange={setPlayer1Score12}
               >
@@ -2118,7 +2118,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score12)}
+                value={player2Score12 ? parseInt(player2Score12) : 0}
                 min={0}
                 onChange={setPlayer2Score12}
               >
@@ -2138,7 +2138,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score12)}
+                value={player3Score12 ? parseInt(player3Score12) : 0}
                 min={0}
                 onChange={setPlayer3Score12}
               >
@@ -2158,7 +2158,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score12)}
+                value={player4Score12 ? parseInt(player4Score12) : 0}
                 min={0}
                 onChange={setPlayer4Score12}
               >
@@ -2191,7 +2191,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score13)}
+                value={player1Score13 ? parseInt(player1Score13) : 0}
                 min={0}
                 onChange={setPlayer1Score13}
               >
@@ -2211,7 +2211,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score13)}
+                value={player2Score13 ? parseInt(player2Score13) : 0}
                 min={0}
                 onChange={setPlayer2Score13}
               >
@@ -2231,7 +2231,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score13)}
+                value={player3Score13 ? parseInt(player3Score13) : 0}
                 min={0}
                 onChange={setPlayer3Score13}
               >
@@ -2251,7 +2251,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score13)}
+                value={player4Score13 ? parseInt(player4Score13) : 0}
                 min={0}
                 onChange={setPlayer4Score13}
               >
@@ -2284,7 +2284,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score14)}
+                value={player1Score14 ? parseInt(player1Score14) : 0}
                 min={0}
                 onChange={setPlayer1Score14}
               >
@@ -2304,7 +2304,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score14)}
+                value={player2Score14 ? parseInt(player2Score14) : 0}
                 min={0}
                 onChange={setPlayer2Score14}
               >
@@ -2324,7 +2324,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score14)}
+                value={player3Score14 ? parseInt(player3Score14) : 0}
                 min={0}
                 onChange={setPlayer3Score14}
               >
@@ -2344,7 +2344,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score14)}
+                value={player4Score14 ? parseInt(player4Score14) : 0}
                 min={0}
                 onChange={setPlayer4Score14}
               >
@@ -2377,7 +2377,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score15)}
+                value={player1Score15 ? parseInt(player1Score15) : 0}
                 min={0}
                 onChange={setPlayer1Score15}
               >
@@ -2397,7 +2397,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score15)}
+                value={player2Score15 ? parseInt(player2Score15) : 0}
                 min={0}
                 onChange={setPlayer2Score15}
               >
@@ -2417,7 +2417,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score15)}
+                value={player3Score15 ? parseInt(player3Score15) : 0}
                 min={0}
                 onChange={setPlayer3Score15}
               >
@@ -2437,7 +2437,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score15)}
+                value={player4Score15 ? parseInt(player4Score15) : 0}
                 min={0}
                 onChange={setPlayer4Score15}
               >
@@ -2470,7 +2470,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score16)}
+                value={player1Score16 ? parseInt(player1Score16) : 0}
                 min={0}
                 onChange={setPlayer1Score16}
               >
@@ -2490,7 +2490,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score16)}
+                value={player2Score16 ? parseInt(player2Score16) : 0}
                 min={0}
                 onChange={setPlayer2Score16}
               >
@@ -2510,7 +2510,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score16)}
+                value={player3Score16 ? parseInt(player3Score16) : 0}
                 min={0}
                 onChange={setPlayer3Score16}
               >
@@ -2530,7 +2530,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score16)}
+                value={player4Score16 ? parseInt(player4Score16) : 0}
                 min={0}
                 onChange={setPlayer4Score16}
               >
@@ -2563,7 +2563,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score17)}
+                value={player1Score17 ? parseInt(player1Score17) : 0}
                 min={0}
                 onChange={setPlayer1Score17}
               >
@@ -2583,7 +2583,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score17)}
+                value={player2Score17 ? parseInt(player2Score17) : 0}
                 min={0}
                 onChange={setPlayer2Score17}
               >
@@ -2603,7 +2603,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score17)}
+                value={player3Score17 ? parseInt(player3Score17) : 0}
                 min={0}
                 onChange={setPlayer3Score17}
               >
@@ -2623,7 +2623,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score17)}
+                value={player4Score17 ? parseInt(player4Score17) : 0}
                 min={0}
                 onChange={setPlayer4Score17}
               >
@@ -2656,7 +2656,7 @@ export default function Scorecard() {
                 className="player1Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player1Score18)}
+                value={player1Score18 ? parseInt(player1Score18) : 0}
                 min={0}
                 onChange={setPlayer1Score18}
               >
@@ -2676,7 +2676,7 @@ export default function Scorecard() {
                 className="player2Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player2Score18)}
+                value={player2Score18 ? parseInt(player2Score18) : 0}
                 min={0}
                 onChange={setPlayer2Score18}
               >
@@ -2696,7 +2696,7 @@ export default function Scorecard() {
                 className="player3Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player3Score18)}
+                value={player3Score18 ? parseInt(player3Score18) : 0}
                 min={0}
                 onChange={setPlayer3Score18}
               >
@@ -2716,7 +2716,7 @@ export default function Scorecard() {
                 className="player4Score"
                 size="sm"
                 maxW={20}
-                value={parseInt(player4Score18)}
+                value={player4Score18 ? parseInt(player4Score18) : 0}
                 min={0}
                 onChange={setPlayer4Score18}
               >
