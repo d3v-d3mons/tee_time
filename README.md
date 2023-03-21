@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+Tee Time is an app for the amatuer golfer. Anyone who wants a clean and simple scorecard to track a weekend game with their buddies ca do so with this free, straightforward, and intuitive app. Simply sign up, create a game, and you're all set!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+The motivation for this project was to solve a problem with current scorecard apps. Most apps on the market are catered towards more serious golfers and are either loaded with extra features that only overcomplicate the experience for the casual golfer or are hidden behind a paywell. Our app keeps solves this by being simple, and most importantly, free. Tee Time is made by amatuer golfers for amatuer golfers!
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Table of Contents 
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Features](#features)
+  - [Credits](#credits)
+  - [License](#license)
+  - [Contributing](#credits)
+  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+No installation required. This app is hosted at this URL: https://t33-time.herokuapp.com/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To access and manually configure with the code if you please:
+1. `git clone` the repo to your local machine so that you have the project files
+2. Install NodeJS and run `npm install` to install the npm package dependencies in `package.json`:
+3. Enter your MySQL2 credentials into the .env file provided in the repo in order to connect to your local MySQL server
+4. Run the server and connect to local host:
+`npm run develop`
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Check out our features from the deployed application: 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Features
+- Login/Logout feature for users
+- Ability to create a new game
+- Ability to pull up previous games through searchbar in Scorecard section
+- Chane players score by each hole in Scorecard section
+## Credits
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The collaborators for this project are as follows:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Nicholas Rhoda
+hhttps://github.com/nicrhoda
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Moses Carrisoza
+https://github.com/MozCa
 
-## Learn More
+Kendall Coleman
+https://github.com/k3ndall02
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Brandon Hicks
+https://github.com/bhicks927
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
+MIT license
+https://spdx.org/licenses/MIT.html#:~:text=Text-,MIT%20License,-Copyright%20(c)%20%3Cyear
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Contributing
 
-### Analyzing the Bundle Size
+If you would like to contribute, please fork the repo and create a pull request. Don't forget to give the project a star! 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Fork the Project
+2. Create your Feature Branch (git checkout -b YourFeatue)
+3. Commit your Changes (git commit -m "Added my YourFeature ")
+4. Push to the Branch (git push origin YourFeature)
+5. Open a Pull Request
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
