@@ -58,16 +58,8 @@ function App() {
               path="/"
               element={
                 <>
+                  <OurStory />
                   <Homepage />
-                  <OurStory />
-                </>
-              }
-            />
-            <Route
-              path="/ourstory"
-              element={
-                <>
-                  <OurStory />
                 </>
               }
             />
