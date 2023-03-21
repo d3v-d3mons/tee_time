@@ -6,45 +6,46 @@ import { useMutation } from "@apollo/client";
 
 export default function NewPlayer() {
   const [addPlayer] = useMutation(ADD_PLAYER);
+  const addNewPlayer = async () => {
+    if (player1) {
+      return await addPlayer({
+        variables: {
+          partyName: partyName,
+          name: player1,
+          score: 0,
+        },
+      });
+    }
 
-  const addNewPlayer1 = async () => {
-    const player = await addPlayer({
-      variables: {
-        partyName: partyName,
-        name: player1,
-        score: 0,
-      },
-    });
-  };
+    if (player2) {
+      return await addPlayer({
+        variables: {
+          partyName: partyName,
+          name: player2,
+          score: 0,
+        },
+      });
+    }
 
-  const addNewPlayer2 = async () => {
-    const player = await addPlayer({
-      variables: {
-        partyName: partyName,
-        name: player2,
-        score: 0,
-      },
-    });
-  };
+    if (player3) {
+      return await addPlayer({
+        variables: {
+          partyName: partyName,
+          name: player3,
+          score: 0,
+        },
+      });
+    }
 
-  const addNewPlayer3 = async () => {
-    const player = await addPlayer({
-      variables: {
-        partyName: partyName,
-        name: player3,
-        score: 0,
-      },
-    });
-  };
-
-  const addNewPlayer4 = async () => {
-    const player = await addPlayer({
-      variables: {
-        partyName: partyName,
-        name: player4,
-        score: 0,
-      },
-    });
+    if (player4) {
+      return await addPlayer({
+        variables: {
+          partyName: partyName,
+          name: player4,
+          score: 0,
+        },
+      });
+    }
   };
 
   const [player1, setPlayer1] = useState("");
@@ -70,9 +71,6 @@ export default function NewPlayer() {
           placeholder="enter player 1 name here"
           onChange={(e) => setPlayer1(e.target.value)}
         />
-        <button className="playerBtn" onClick={addNewPlayer1}>
-          Add Player
-        </button>
         <Input
           className="playerName"
           type="text"
@@ -80,9 +78,6 @@ export default function NewPlayer() {
           placeholder="enter player 2 name"
           onChange={(e) => setPlayer2(e.target.value)}
         />
-        <button className="playerBtn" onClick={addNewPlayer2}>
-          Add Player
-        </button>
         <Input
           className="playerName"
           type="text"
@@ -90,9 +85,6 @@ export default function NewPlayer() {
           placeholder="enter player 3 name"
           onChange={(e) => setPlayer3(e.target.value)}
         />
-        <button className="playerBtn" onClick={addNewPlayer3}>
-          Add Player
-        </button>
         <Input
           className="playerName"
           type="text"
@@ -100,15 +92,11 @@ export default function NewPlayer() {
           placeholder="enter player 4 name"
           onChange={(e) => setPlayer4(e.target.value)}
         />
-        <button className="playerBtn" onClick={addNewPlayer4}>
-          Add Player
+        <button className="playerBtn" onClick={addNewPlayer}>
+          Add Players
         </button>
-        <Button
-          type="button"
-          colorScheme="green"
-          onClick={window.location.replace("/scorecard")}
-        >
-          Go to scorecard
+        <Button type="click">
+          <Link to="/scorecard">Go to scorecard</Link>
         </Button>
       </div>
     </>
