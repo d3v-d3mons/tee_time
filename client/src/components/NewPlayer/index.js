@@ -1,22 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import {
-  Button,
-  Input,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  useDisclosure,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-} from "@chakra-ui/react";
+import { Button, Input } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ADD_PLAYER } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
-import { GameContext } from "../../utils/GameContext";
 
 export default function NewPlayer() {
   const [addPlayer] = useMutation(ADD_PLAYER);
@@ -69,55 +55,62 @@ export default function NewPlayer() {
 
   return (
     <>
-      <Input
-        className="game"
-        type="text"
-        value={partyName}
-        placeholder="enter party name here"
-        onChange={(e) => setPartyName(e.target.value)}
-      />
-      <Input
-      className="playerName" type="text" value={player1}
-      placeholder="enter player 1 name here" onChange=
-      {(e) => setPlayer1(e.target.value)}
-      />
-      <button className="playerBtn" onClick={addNewPlayer1}>
-        Add Player
-      </button>
-      <Input
-        className="playerName"
-        type="text"
-        value={player2}
-        placeholder="enter player 2 name"
-        onChange={(e) => setPlayer2(e.target.value)}
-      />
-      <button className="playerBtn" onClick={addNewPlayer2}>
-        Add Player
-      </button>
-      <Input
-        className="playerName"
-        type="text"
-        value={player3}
-        placeholder="enter player 3 name"
-        onChange={(e) => setPlayer3(e.target.value)}
-      />
-      <button className="playerBtn" onClick={addNewPlayer3}>
-        Add Player
-      </button>
-      <Input
-        className="playerName"
-        type="text"
-        value={player4}
-        placeholder="enter player 4 name"
-        onChange={(e) => setPlayer4(e.target.value)}
-      />
-      <button className="playerBtn" onClick={addNewPlayer4}>
-        Add Player
-      </button>
-      <Button type="button" colorScheme="green">
-        Go to scorecard
-        <Link to="/scorecard" />
-      </Button>
+      <div className="addPlayer">
+        <Input
+          className="gamePartyName"
+          type="text"
+          value={partyName}
+          placeholder="enter party name here"
+          onChange={(e) => setPartyName(e.target.value)}
+        />
+        <Input
+          className="playerName"
+          type="text"
+          value={player1}
+          placeholder="enter player 1 name here"
+          onChange={(e) => setPlayer1(e.target.value)}
+        />
+        <button className="playerBtn" onClick={addNewPlayer1}>
+          Add Player
+        </button>
+        <Input
+          className="playerName"
+          type="text"
+          value={player2}
+          placeholder="enter player 2 name"
+          onChange={(e) => setPlayer2(e.target.value)}
+        />
+        <button className="playerBtn" onClick={addNewPlayer2}>
+          Add Player
+        </button>
+        <Input
+          className="playerName"
+          type="text"
+          value={player3}
+          placeholder="enter player 3 name"
+          onChange={(e) => setPlayer3(e.target.value)}
+        />
+        <button className="playerBtn" onClick={addNewPlayer3}>
+          Add Player
+        </button>
+        <Input
+          className="playerName"
+          type="text"
+          value={player4}
+          placeholder="enter player 4 name"
+          onChange={(e) => setPlayer4(e.target.value)}
+        />
+        <button className="playerBtn" onClick={addNewPlayer4}>
+          Add Player
+        </button>
+        <Button
+          type="button"
+          colorScheme="green"
+          onClick={window.location.replace("/scorecard")}
+        >
+          Go to scorecard
+        </Button>
+      </div>
     </>
   );
 }

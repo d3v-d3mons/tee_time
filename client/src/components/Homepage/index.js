@@ -17,25 +17,22 @@ import {
   Select,
   Stack,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-import { GameContext } from "../../utils/GameContext";
 
 export default function Homepage() {
   const [beginCreate] = useMutation(BEGIN_CREATE);
-  const [addPlayers] = useMutation(ADD_PLAYER);
 
   const newGameHandler = async () => {
     if (!partyName || !gameType || !course) {
       alert("you must fill all fields");
     }
-      const game = await beginCreate({
-        variables: {
-          partyName: partyName,
-          gameType: gameType,
-          course: course,
-        },
-      })
-      window.location.replace("/newplayer")
+    const game = await beginCreate({
+      variables: {
+        partyName: partyName,
+        gameType: gameType,
+        course: course,
+      },
+    });
+    window.location.replace("/newplayer");
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -47,7 +44,7 @@ export default function Homepage() {
     <>
       {auth.loggedIn() ? (
         <>
-          <Button className="createGameBtn" onClick={onOpen} >
+          <Button className="createGameBtn" onClick={onOpen}>
             Create New Game
           </Button>
           <Modal isOpen={isOpen} onClose={onClose}>
