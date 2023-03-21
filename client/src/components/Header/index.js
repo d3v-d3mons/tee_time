@@ -61,7 +61,7 @@ export default function Header() {
       auth.login(token);
       window.location.assign("");
     } catch (err) {
-      return setError(err);
+      return setError("something went wrong");
     }
   };
 
@@ -89,7 +89,7 @@ export default function Header() {
       const token = mutationResponse.data.login.token;
       auth.login(token);
     } catch (err) {
-      return setError(err);
+      return setError("email or password incorrect");
     }
   };
 
