@@ -29,7 +29,6 @@
     margin-left: 25%;
     margin-right: 25%;
     background-color: #00a028;
-    opacity: 95%;
 }
 
 .holeNumber {
@@ -40,7 +39,6 @@
 
 .scores {
     background-color: #00a028;
-    opacity: 80%;
     color: black;
     font-weight: 600;
     border-radius: .7rem;
