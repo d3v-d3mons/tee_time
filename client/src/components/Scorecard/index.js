@@ -64,10 +64,11 @@ export default function Scorecard() {
       },
     });
     setCourse(game.data.getGames.course);
+    setGameMode(game.data.getGames.gameType);
+    setGamePartyName(game.data.getGames.partyName);
     for (let i = 0; i < game.data.getGames.players.length; i++) {
       players.push(game.data.getGames.players[i]);
     }
-    console.log(players[0].holeOne);
 
     if (players[0]) {
       setPlayer1(players[0].name);
@@ -164,95 +165,95 @@ export default function Scorecard() {
   const [player3, setPlayer3] = useState("");
   const [player4, setPlayer4] = useState("");
   // HOLE ONE
-  const [player1Score, setPlayer1Score] = useState("");
-  const [player2Score, setPlayer2Score] = useState("");
-  const [player3Score, setPlayer3Score] = useState("");
-  const [player4Score, setPlayer4Score] = useState("");
+  const [player1Score, setPlayer1Score] = useState(0);
+  const [player2Score, setPlayer2Score] = useState(0);
+  const [player3Score, setPlayer3Score] = useState(0);
+  const [player4Score, setPlayer4Score] = useState(0);
   // HOLE TWO
-  const [player1Score2, setPlayer1Score2] = useState("");
-  const [player2Score2, setPlayer2Score2] = useState("");
-  const [player3Score2, setPlayer3Score2] = useState("");
-  const [player4Score2, setPlayer4Score2] = useState("");
+  const [player1Score2, setPlayer1Score2] = useState(0);
+  const [player2Score2, setPlayer2Score2] = useState(0);
+  const [player3Score2, setPlayer3Score2] = useState(0);
+  const [player4Score2, setPlayer4Score2] = useState(0);
   // HOLE THREE
-  const [player1Score3, setPlayer1Score3] = useState("");
-  const [player2Score3, setPlayer2Score3] = useState("");
-  const [player3Score3, setPlayer3Score3] = useState("");
-  const [player4Score3, setPlayer4Score3] = useState("");
+  const [player1Score3, setPlayer1Score3] = useState(0);
+  const [player2Score3, setPlayer2Score3] = useState(0);
+  const [player3Score3, setPlayer3Score3] = useState(0);
+  const [player4Score3, setPlayer4Score3] = useState(0);
   // HOLE FOUR
-  const [player1Score4, setPlayer1Score4] = useState("");
-  const [player2Score4, setPlayer2Score4] = useState("");
-  const [player3Score4, setPlayer3Score4] = useState("");
-  const [player4Score4, setPlayer4Score4] = useState("");
+  const [player1Score4, setPlayer1Score4] = useState(0);
+  const [player2Score4, setPlayer2Score4] = useState(0);
+  const [player3Score4, setPlayer3Score4] = useState(0);
+  const [player4Score4, setPlayer4Score4] = useState(0);
   // HOLE FIVE
-  const [player1Score5, setPlayer1Score5] = useState("");
-  const [player2Score5, setPlayer2Score5] = useState("");
-  const [player3Score5, setPlayer3Score5] = useState("");
-  const [player4Score5, setPlayer4Score5] = useState("");
+  const [player1Score5, setPlayer1Score5] = useState(0);
+  const [player2Score5, setPlayer2Score5] = useState(0);
+  const [player3Score5, setPlayer3Score5] = useState(0);
+  const [player4Score5, setPlayer4Score5] = useState(0);
   // HOLE SIX
-  const [player1Score6, setPlayer1Score6] = useState("");
-  const [player2Score6, setPlayer2Score6] = useState("");
-  const [player3Score6, setPlayer3Score6] = useState("");
-  const [player4Score6, setPlayer4Score6] = useState("");
+  const [player1Score6, setPlayer1Score6] = useState(0);
+  const [player2Score6, setPlayer2Score6] = useState(0);
+  const [player3Score6, setPlayer3Score6] = useState(0);
+  const [player4Score6, setPlayer4Score6] = useState(0);
   // HOLE SEVEN
-  const [player1Score7, setPlayer1Score7] = useState("");
-  const [player2Score7, setPlayer2Score7] = useState("");
-  const [player3Score7, setPlayer3Score7] = useState("");
-  const [player4Score7, setPlayer4Score7] = useState("");
+  const [player1Score7, setPlayer1Score7] = useState(0);
+  const [player2Score7, setPlayer2Score7] = useState(0);
+  const [player3Score7, setPlayer3Score7] = useState(0);
+  const [player4Score7, setPlayer4Score7] = useState(0);
   // HOLE EIGHT
-  const [player1Score8, setPlayer1Score8] = useState("");
-  const [player2Score8, setPlayer2Score8] = useState("");
-  const [player3Score8, setPlayer3Score8] = useState("");
-  const [player4Score8, setPlayer4Score8] = useState("");
+  const [player1Score8, setPlayer1Score8] = useState(0);
+  const [player2Score8, setPlayer2Score8] = useState(0);
+  const [player3Score8, setPlayer3Score8] = useState(0);
+  const [player4Score8, setPlayer4Score8] = useState(0);
   // HOLE NINE
-  const [player1Score9, setPlayer1Score9] = useState("");
-  const [player2Score9, setPlayer2Score9] = useState("");
-  const [player3Score9, setPlayer3Score9] = useState("");
-  const [player4Score9, setPlayer4Score9] = useState("");
+  const [player1Score9, setPlayer1Score9] = useState(0);
+  const [player2Score9, setPlayer2Score9] = useState(0);
+  const [player3Score9, setPlayer3Score9] = useState(0);
+  const [player4Score9, setPlayer4Score9] = useState(0);
   // HOLE TEN
-  const [player1Score10, setPlayer1Score10] = useState("");
-  const [player2Score10, setPlayer2Score10] = useState("");
-  const [player3Score10, setPlayer3Score10] = useState("");
-  const [player4Score10, setPlayer4Score10] = useState("");
+  const [player1Score10, setPlayer1Score10] = useState(0);
+  const [player2Score10, setPlayer2Score10] = useState(0);
+  const [player3Score10, setPlayer3Score10] = useState(0);
+  const [player4Score10, setPlayer4Score10] = useState(0);
   // HOLE ELEVEN
-  const [player1Score11, setPlayer1Score11] = useState("");
-  const [player2Score11, setPlayer2Score11] = useState("");
-  const [player3Score11, setPlayer3Score11] = useState("");
-  const [player4Score11, setPlayer4Score11] = useState("");
+  const [player1Score11, setPlayer1Score11] = useState(0);
+  const [player2Score11, setPlayer2Score11] = useState(0);
+  const [player3Score11, setPlayer3Score11] = useState(0);
+  const [player4Score11, setPlayer4Score11] = useState(0);
   // HOLE TWELVE
-  const [player1Score12, setPlayer1Score12] = useState("");
-  const [player2Score12, setPlayer2Score12] = useState("");
-  const [player3Score12, setPlayer3Score12] = useState("");
-  const [player4Score12, setPlayer4Score12] = useState("");
+  const [player1Score12, setPlayer1Score12] = useState(0);
+  const [player2Score12, setPlayer2Score12] = useState(0);
+  const [player3Score12, setPlayer3Score12] = useState(0);
+  const [player4Score12, setPlayer4Score12] = useState(0);
   // HOLE THIRTEEN
-  const [player1Score13, setPlayer1Score13] = useState("");
-  const [player2Score13, setPlayer2Score13] = useState("");
-  const [player3Score13, setPlayer3Score13] = useState("");
-  const [player4Score13, setPlayer4Score13] = useState("");
+  const [player1Score13, setPlayer1Score13] = useState(0);
+  const [player2Score13, setPlayer2Score13] = useState(0);
+  const [player3Score13, setPlayer3Score13] = useState(0);
+  const [player4Score13, setPlayer4Score13] = useState(0);
   // HOLE FOURTEEN
-  const [player1Score14, setPlayer1Score14] = useState("");
-  const [player2Score14, setPlayer2Score14] = useState("");
-  const [player3Score14, setPlayer3Score14] = useState("");
-  const [player4Score14, setPlayer4Score14] = useState("");
+  const [player1Score14, setPlayer1Score14] = useState(0);
+  const [player2Score14, setPlayer2Score14] = useState(0);
+  const [player3Score14, setPlayer3Score14] = useState(0);
+  const [player4Score14, setPlayer4Score14] = useState(0);
   // HOLE FIFTEEN
-  const [player1Score15, setPlayer1Score15] = useState("");
-  const [player2Score15, setPlayer2Score15] = useState("");
-  const [player3Score15, setPlayer3Score15] = useState("");
-  const [player4Score15, setPlayer4Score15] = useState("");
+  const [player1Score15, setPlayer1Score15] = useState(0);
+  const [player2Score15, setPlayer2Score15] = useState(0);
+  const [player3Score15, setPlayer3Score15] = useState(0);
+  const [player4Score15, setPlayer4Score15] = useState(0);
   // HOLE SIXTEEN
-  const [player1Score16, setPlayer1Score16] = useState("");
-  const [player2Score16, setPlayer2Score16] = useState("");
-  const [player3Score16, setPlayer3Score16] = useState("");
-  const [player4Score16, setPlayer4Score16] = useState("");
+  const [player1Score16, setPlayer1Score16] = useState(0);
+  const [player2Score16, setPlayer2Score16] = useState(0);
+  const [player3Score16, setPlayer3Score16] = useState(0);
+  const [player4Score16, setPlayer4Score16] = useState(0);
   // HOLE SEVENTEEN
-  const [player1Score17, setPlayer1Score17] = useState("");
-  const [player2Score17, setPlayer2Score17] = useState("");
-  const [player3Score17, setPlayer3Score17] = useState("");
-  const [player4Score17, setPlayer4Score17] = useState("");
+  const [player1Score17, setPlayer1Score17] = useState(0);
+  const [player2Score17, setPlayer2Score17] = useState(0);
+  const [player3Score17, setPlayer3Score17] = useState(0);
+  const [player4Score17, setPlayer4Score17] = useState(0);
   // HOLE EIGHTEEEN
-  const [player1Score18, setPlayer1Score18] = useState("");
-  const [player2Score18, setPlayer2Score18] = useState("");
-  const [player3Score18, setPlayer3Score18] = useState("");
-  const [player4Score18, setPlayer4Score18] = useState("");
+  const [player1Score18, setPlayer1Score18] = useState(0);
+  const [player2Score18, setPlayer2Score18] = useState(0);
+  const [player3Score18, setPlayer3Score18] = useState(0);
+  const [player4Score18, setPlayer4Score18] = useState(0);
   // ADD HOLE ONE
   const addHoleOne = async () => {
     const name = player1;
@@ -1039,15 +1040,21 @@ export default function Scorecard() {
         Get game
       </button>
       </Center>
+      <Center>
       <div className="gameName">
-        <h1>{gamePartyName}</h1>
+        <h5>Party: {gamePartyName}</h5>
       </div>
+      </Center>
+      <Center>
       <div className="course">
-        <h1>{course}</h1>
+        <h5>Course: {course}</h5>
       </div>
+      </Center>
+      <Center>
       <div className="gameType">
-        <h1>{gameMode}</h1>
+        <h5>Game: {gameMode}</h5>
       </div>
+      </Center>
 
       {/*    ----------------- HOLE ONE CARD ----------------    */}
       <Center>
@@ -1058,7 +1065,7 @@ export default function Scorecard() {
             </div>
             <div className="player1">
               <h1>
-                Player 1:{player1} Score:
+                <div className="playerName"> Player 1:{player1}</div><div className="playerScore"> Score:
                 <NumberInput
                   className="player1Score"
                   size="sm"
@@ -1074,11 +1081,12 @@ export default function Scorecard() {
                     <NumberDecrementStepper />
                   </NumberInputStepper>
                 </NumberInput>
+              </div>
               </h1>
             </div>
             <div className="player2">
               <h1>
-                Player 2:{player2} Score:
+                <div className="playerName" >Player 2:{player2}</div><div className="playerScore"> Score:
                 <NumberInput
                   className="player2Score"
                   size="sm"
@@ -1094,11 +1102,12 @@ export default function Scorecard() {
                     <NumberDecrementStepper />
                   </NumberInputStepper>
                 </NumberInput>
+                </div>
               </h1>
             </div>
             <div className="player3">
               <h1>
-                Player 3:{player3} Score:
+                <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
                 <NumberInput
                   className="player3Score"
                   size="sm"
@@ -1114,11 +1123,12 @@ export default function Scorecard() {
                     <NumberDecrementStepper />
                   </NumberInputStepper>
                 </NumberInput>
+                </div>
               </h1>
             </div>
             <div className="player4">
               <h1>
-                Player 4:{player4} Score:
+                <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
                 <NumberInput
                   className="player4Score"
                   size="sm"
@@ -1134,6 +1144,7 @@ export default function Scorecard() {
                     <NumberDecrementStepper />
                   </NumberInputStepper>
                 </NumberInput>
+                </div>
               </h1>
             </div>
             <button className="addScores" onClick={addHoleOne}>
@@ -1152,7 +1163,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -1167,11 +1178,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -1186,11 +1198,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -1205,11 +1218,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -1224,6 +1238,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleTwo}>
@@ -1241,7 +1256,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -1256,11 +1271,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -1275,11 +1291,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -1294,11 +1311,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -1313,6 +1331,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleThree}>
@@ -1330,7 +1349,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -1345,11 +1364,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -1364,11 +1384,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -1383,11 +1404,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -1402,6 +1424,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleFour}>
@@ -1419,7 +1442,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -1434,11 +1457,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -1453,11 +1477,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -1472,11 +1497,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -1491,6 +1517,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleFive}>
@@ -1508,7 +1535,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -1523,11 +1550,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -1542,11 +1570,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -1561,11 +1590,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -1580,6 +1610,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleSix}>
@@ -1597,7 +1628,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -1612,11 +1643,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -1631,11 +1663,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -1650,11 +1683,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -1669,6 +1703,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleSeven}>
@@ -1686,7 +1721,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -1701,11 +1736,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -1720,11 +1756,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -1739,11 +1776,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -1758,6 +1796,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleEight}>
@@ -1775,7 +1814,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -1790,11 +1829,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -1809,11 +1849,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -1828,11 +1869,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -1847,6 +1889,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleNine}>
@@ -1864,7 +1907,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -1879,11 +1922,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -1898,11 +1942,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -1917,11 +1962,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -1936,6 +1982,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleTen}>
@@ -1953,7 +2000,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -1968,11 +2015,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -1987,11 +2035,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -2006,11 +2055,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -2025,6 +2075,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleEleven}>
@@ -2042,7 +2093,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -2057,11 +2108,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -2076,11 +2128,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -2095,11 +2148,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -2114,6 +2168,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleTwelve}>
@@ -2131,7 +2186,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -2146,11 +2201,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -2165,11 +2221,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -2184,11 +2241,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -2203,6 +2261,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleThirteen}>
@@ -2220,7 +2279,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -2235,11 +2294,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -2254,11 +2314,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -2273,11 +2334,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -2292,6 +2354,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleFourteen}>
@@ -2309,7 +2372,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -2324,11 +2387,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div> 
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -2343,11 +2407,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -2362,11 +2427,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -2381,6 +2447,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleFifteen}>
@@ -2398,7 +2465,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -2413,11 +2480,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -2432,11 +2500,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -2451,11 +2520,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -2470,6 +2540,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleSixteen}>
@@ -2487,7 +2558,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -2502,11 +2573,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -2521,11 +2593,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -2540,11 +2613,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -2559,6 +2633,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleSeventeen}>
@@ -2576,7 +2651,7 @@ export default function Scorecard() {
           </div>
           <div className="player1">
             <h1>
-              Player 1:{player1} Score:
+              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player1Score"
                 size="sm"
@@ -2591,11 +2666,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player2">
             <h1>
-              Player 2:{player2} Score:
+              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player2Score"
                 size="sm"
@@ -2610,11 +2686,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player3">
             <h1>
-              Player 3:{player3} Score:
+              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player3Score"
                 size="sm"
@@ -2629,11 +2706,12 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <div className="player4">
             <h1>
-              Player 4:{player4} Score:
+              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
               <NumberInput
                 className="player4Score"
                 size="sm"
@@ -2648,6 +2726,7 @@ export default function Scorecard() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+              </div>
             </h1>
           </div>
           <button className="addScores" onClick={addHoleEighteen}>
