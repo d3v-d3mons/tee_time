@@ -55,9 +55,14 @@ export default function Scorecard() {
   const [addScoreSixteen] = useMutation(ADD_SCORE_SIXTEEN);
   const [addScoreSeventeen] = useMutation(ADD_SCORE_SEVENTEEN);
   const [addScoreEighteen] = useMutation(ADD_SCORE_EIGHTEEN);
+  const [loading, setLoading] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(null);
 
   const players = [];
   const getGame = async () => {
+    setLoading(true);
+    try {
     const game = await queryGames({
       variables: {
         partyName: partyName,
@@ -154,6 +159,11 @@ export default function Scorecard() {
       setPlayer4Score17(players[3].holeSeventeen);
       setPlayer4Score18(players[3].holeEighteen);
     }
+    setLoaded(true);
+    setLoading(false);
+  } catch (err) {
+    setError(err);
+  }
   };
 
   const [partyName, setPartyName] = useState("");
@@ -1040,6 +1050,8 @@ export default function Scorecard() {
         Get game
       </button>
       </Center>
+      {loaded &&
+      <>
       <Center>
       <div className="gameName">
         <h5>Party: {gamePartyName}</h5>
@@ -1055,6 +1067,20 @@ export default function Scorecard() {
         <h5>Game: {gameMode}</h5>
       </div>
       </Center>
+      </>
+      }
+      {loading &&
+      <Center>
+        <div className="loading">
+          <h2>We're fetching your game please wait</h2>
+        </div>
+      </Center>
+      }
+      {error && 
+      <Center>
+        <div className="danger"><h1>There was a problem</h1></div>
+      </Center>
+      }
 
       {/*    ----------------- HOLE ONE CARD ----------------    */}
       <Center>
