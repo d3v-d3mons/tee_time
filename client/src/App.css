@@ -122,5 +122,42 @@ footer {
   border-radius: .7rem;
   background-color: #00a028; opacity: .85;
   border-color: black;
- 
+}
+
+.submitBtn {
+  background-color: #34383f;
+  border-color: black;
+}
+
+.gameType {
+  color: black;
+}
+
+/*  ADD PLAYER  */
+.addPlayer {
+  background-color: #00a028; opacity: .85;
+  border: solid;
+  border-radius: .7rem;
+  border-color: black;
+  width: 70%;
+  padding: .5rem;
+}
+
+.playerBtn {
+  margin-top: .5rem;
+  background-color: #34383f;
+  border: solid;
+  border-color: black;
+}
+
+.partyNameTitle {
+  color: black;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+.playerTitle {
+  color: black;
+  text-decoration: underline;
+  font-weight: 400;
 }
