@@ -1052,7 +1052,7 @@ export default function Scorecard() {
       {/*    ----------------- HOLE ONE CARD ----------------    */}
       <Center>
         <div className="hole1 scores">
-          <Box borderColor="transparent">
+          <Box>
             <div className="holeNumber">
               <h1>Hole 1</h1>
             </div>
