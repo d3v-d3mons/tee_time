@@ -7,8 +7,6 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import React from "react";
-import createCache from '@emotion/cache';
-import { CacheProvider } from '@emotion/react'
 import { ChakraProvider } from "@chakra-ui/react";
 import GameProvider from "./utils/GameContext";
 
@@ -40,15 +38,9 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const emotionCache = createCache({
-  key: 'emotion-css-cache',
-  prepend: true,
-});
-
 function App() {
   return (
     <GameProvider>
-    <CacheProvider value={emotionCache}>
     <ChakraProvider>
       <ApolloProvider client={client}>
         <Router>
@@ -71,7 +63,6 @@ function App() {
         </Router>
       </ApolloProvider>
     </ChakraProvider>
-    </CacheProvider>
     </GameProvider>
   );
 }
