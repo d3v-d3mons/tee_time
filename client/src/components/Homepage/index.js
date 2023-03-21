@@ -16,6 +16,7 @@ import {
   useDisclosure,
   Select,
   Stack,
+  Center,
 } from "@chakra-ui/react";
 
 export default function Homepage() {
@@ -44,12 +45,14 @@ export default function Homepage() {
     <>
       {auth.loggedIn() ? (
         <>
+          <Center>
           <Button className="createGameBtn" onClick={onOpen}>
             Create New Game
           </Button>
+          </Center>
           <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent className="modal">
               <ModalHeader className="createGameHeader">
                 Craft your match
               </ModalHeader>
@@ -113,12 +116,14 @@ export default function Homepage() {
         </>
       ) : (
         <>
+          <Center>
           <Button className="createGameBtn" onClick={onOpen}>
             Create New Game
           </Button>
+          </Center>
           <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent className="modal">
               <ModalHeader className="createGameHeader">
                 Must be logged in to create new match
               </ModalHeader>
