@@ -35,7 +35,6 @@ export default function Homepage() {
       },
     });
     setComplete(true);
-    window.location.replace("/newplayer");
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
