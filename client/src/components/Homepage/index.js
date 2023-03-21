@@ -18,10 +18,10 @@ import {
   Stack,
   Center,
 } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
 
 export default function Homepage() {
   const [beginCreate] = useMutation(BEGIN_CREATE);
-
   const newGameHandler = async () => {
     if (!partyName || !gameType || !course) {
       alert("you must fill all fields");
@@ -109,6 +109,7 @@ export default function Homepage() {
                   >
                     Let's Go!
                   </Button>
+                  <Button type="click" className="newPlayer"><Link to="/newplayer">Players</Link></Button>
                 </form>
               </ModalBody>
             </ModalContent>
