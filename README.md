@@ -1,6 +1,6 @@
 # Tee Time
 
-Tee Time is an app for the amatuer golfer. Anyone who wants a clean and simple scorecard to track a weekend game with their buddies ca do so with this free, straightforward, and intuitive app. Simply sign up, create a game, and you're all set!
+Tee Time is an app for the amatuer golfer. Anyone who wants a clean and simple scorecard to track a weekend game with their buddies can do so with this free, straightforward, and intuitive app. Simply sign up, create a game, add players, and you're all set!
 
 
 The motivation for this project was to solve a problem with current scorecard apps. Most apps on the market are catered towards more serious golfers and are either loaded with extra features that only overcomplicate the experience for the casual golfer or are hidden behind a paywell. Our app keeps solves this by being simple, and most importantly, free. Tee Time is made by amatuer golfers for amatuer golfers!
@@ -23,9 +23,7 @@ No installation required. This app is hosted at this URL: https://t33-time.herok
 To access and manually configure with the code if you please:
 1. `git clone` the repo to your local machine so that you have the project files
 2. Install NodeJS and run `npm install` to install the npm package dependencies in `package.json`:
-3. Enter your MySQL2 credentials into the .env file provided in the repo in order to connect to your local MySQL server
-4. Run the server and connect to local host:
-`npm run develop`
+3. Run the server and connect to local host: `npm run develop`
 
 
 ## Usage
@@ -39,6 +37,7 @@ Check out our features from the deployed application:
 - Ability to create a new game
 - Ability to pull up previous games through searchbar in Scorecard section
 - Chane players score by each hole in Scorecard section
+
 ## Credits
 
 The collaborators for this project are as follows:
