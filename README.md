@@ -35,8 +35,9 @@ Check out our features from the deployed application:
 ## Features
 - Login/Logout feature for users
 - Ability to create a new game
+- Add players to party
 - Ability to pull up previous games through searchbar in Scorecard section
-- Chane players score by each hole in Scorecard section
+- Change players score by each hole in Scorecard section
 
 ## Credits
 
