@@ -1,6 +1,6 @@
 
 body {
-  color:#E3EEEB;
+  color:#ffffff;
   background-attachment: fixed;
   background-image:url('./images/country_club.jpg'); 
   height: 100%;
@@ -120,6 +120,7 @@ footer {
   margin-left: 20%;
   padding: 1rem;
   border-radius: .7rem;
-  background-color: #00a028;
+  background-color: #00a028; opacity: .85;
   border-color: black;
+ 
 }
