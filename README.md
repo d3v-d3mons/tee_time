@@ -27,6 +27,7 @@ To access and manually configure with the code if you please:
 
 
 ## Usage
+![search_engine_sc](https://user-images.githubusercontent.com/112894805/226793580-7451ea5a-6db3-468e-82b4-35887af1851d.png)
 
 Check out our features from the deployed application: 
 
