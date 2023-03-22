@@ -55,9 +55,12 @@ export default function Scorecard() {
   const [addScoreSixteen] = useMutation(ADD_SCORE_SIXTEEN);
   const [addScoreSeventeen] = useMutation(ADD_SCORE_SEVENTEEN);
   const [addScoreEighteen] = useMutation(ADD_SCORE_EIGHTEEN);
+  const [loading, setLoading] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const players = [];
   const getGame = async () => {
+    setLoading(true);
     const game = await queryGames({
       variables: {
         partyName: partyName,
@@ -154,6 +157,8 @@ export default function Scorecard() {
       setPlayer4Score17(players[3].holeSeventeen);
       setPlayer4Score18(players[3].holeEighteen);
     }
+    setLoading(false);
+    setLoaded(true);
   };
 
   const [partyName, setPartyName] = useState("");
@@ -1036,25 +1041,38 @@ export default function Scorecard() {
         placeholder="Party Name:"
       />
       <Center>
-      <button className="scorecardPartySearch" type="click" onClick={getGame}>
-        Get game
-      </button>
+        <button className="scorecardPartySearch" type="click" onClick={getGame}>
+          Get game
+        </button>
       </Center>
-      <Center>
-      <div className="gameName">
-        <h5>Party: {gamePartyName}</h5>
-      </div>
-      </Center>
-      <Center>
-      <div className="course">
-        <h5>Course: {course}</h5>
-      </div>
-      </Center>
-      <Center>
-      <div className="gameType">
-        <h5>Game: {gameMode}</h5>
-      </div>
-      </Center>
+      {loaded && (
+        <>
+          <Center>
+            <div className="gameName">
+              <h5>Party: {gamePartyName}</h5>
+            </div>
+          </Center>
+          <Center>
+            <div className="course">
+              <h5>Course: {course}</h5>
+            </div>
+          </Center>
+          <Center>
+            <div className="gameType">
+              <h5>Game: {gameMode}</h5>
+            </div>
+          </Center>
+        </>
+      )}
+      {loading && (
+        <>
+          <Center>
+            <div className="loading">
+              <h5>Fetching Game...</h5>
+            </div>
+          </Center>
+        </>
+      )}
 
       {/*    ----------------- HOLE ONE CARD ----------------    */}
       <Center>
@@ -1065,85 +1083,97 @@ export default function Scorecard() {
             </div>
             <div className="player1">
               <h1>
-                <div className="playerName"> Player 1:{player1}</div><div className="playerScore"> Score:
-                <NumberInput
-                  className="player1Score"
-                  size="sm"
-                  maxW={20}
-                  value={parseInt(player1Score)}
-                  defaultValue={0}
-                  min={0}
-                  onChange={setPlayer1Score}
-                >
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-              </div>
+                <div className="playerName"> Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score ? parseInt(player1Score) : 0}
+                    defaultValue={0}
+                    min={0}
+                    onChange={setPlayer1Score}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
               </h1>
             </div>
             <div className="player2">
               <h1>
-                <div className="playerName" >Player 2:{player2}</div><div className="playerScore"> Score:
-                <NumberInput
-                  className="player2Score"
-                  size="sm"
-                  maxW={20}
-                  value={parseInt(player2Score)}
-                  defaultValue={0}
-                  min={0}
-                  onChange={setPlayer2Score}
-                >
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score ? parseInt(player2Score) : 0}
+                    defaultValue={0}
+                    min={0}
+                    onChange={setPlayer2Score}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
                 </div>
               </h1>
             </div>
             <div className="player3">
               <h1>
-                <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-                <NumberInput
-                  className="player3Score"
-                  size="sm"
-                  maxW={20}
-                  value={parseInt(player3Score)}
-                  defaultValue={0}
-                  min={0}
-                  onChange={setPlayer3Score}
-                >
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score ? parseInt(player3Score) : 0}
+                    defaultValue={0}
+                    min={0}
+                    onChange={setPlayer3Score}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
                 </div>
               </h1>
             </div>
             <div className="player4">
               <h1>
-                <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-                <NumberInput
-                  className="player4Score"
-                  size="sm"
-                  maxW={20}
-                  value={parseInt(player4Score)}
-                  defaultValue={0}
-                  min={0}
-                  onChange={setPlayer4Score}
-                >
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score ? parseInt(player4Score) : 0}
+                    defaultValue={0}
+                    min={0}
+                    onChange={setPlayer4Score}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
                 </div>
               </h1>
             </div>
@@ -1155,1586 +1185,1790 @@ export default function Scorecard() {
       </Center>
 
       {/* ----------------HOLE TWO CARD--------------- */}
-    <Center>
-      <div className="hole2 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 2</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score2)}
-                min={0}
-                onChange={setPlayer1Score2}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score2)}
-                min={0}
-                onChange={setPlayer2Score2}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score2)}
-                min={0}
-                onChange={setPlayer3Score2}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score2)}
-                min={0}
-                onChange={setPlayer4Score2}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleTwo}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole2 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 2</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score2 ? parseInt(player1Score2) : 0}
+                    min={0}
+                    onChange={setPlayer1Score2}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score2 ? parseInt(player2Score2) : 0}
+                    min={0}
+                    onChange={setPlayer2Score2}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score2 ? parseInt(player3Score2) : 0}
+                    min={0}
+                    onChange={setPlayer3Score2}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score2 ? parseInt(player4Score2) : 0}
+                    min={0}
+                    onChange={setPlayer4Score2}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleTwo}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*    ------------------ HOLE THREE CARD --------------- */}
-    <Center>
-      <div className="hole3 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 3</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score3)}
-                min={0}
-                onChange={setPlayer1Score3}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score3)}
-                min={0}
-                onChange={setPlayer2Score3}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score3)}
-                min={0}
-                onChange={setPlayer3Score3}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score3)}
-                min={0}
-                onChange={setPlayer4Score3}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleThree}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole3 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 3</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score3 ? parseInt(player1Score3) : 0}
+                    min={0}
+                    onChange={setPlayer1Score3}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score3 ? parseInt(player2Score3) : 0}
+                    min={0}
+                    onChange={setPlayer2Score3}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score3 ? parseInt(player3Score3) : 0}
+                    min={0}
+                    onChange={setPlayer3Score3}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score3 ? parseInt(player4Score3) : 0}
+                    min={0}
+                    onChange={setPlayer4Score3}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleThree}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*   --------------- HOLE FOUR CARD ----------------- */}
-    <Center>
-      <div className="hole4 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 4</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score4)}
-                min={0}
-                onChange={setPlayer1Score4}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score4)}
-                min={0}
-                onChange={setPlayer2Score4}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score4)}
-                min={0}
-                onChange={setPlayer3Score4}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score4)}
-                min={0}
-                onChange={setPlayer4Score4}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleFour}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole4 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 4</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score4 ? parseInt(player1Score4) : 0}
+                    min={0}
+                    onChange={setPlayer1Score4}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score4 ? parseInt(player2Score4) : 0}
+                    min={0}
+                    onChange={setPlayer2Score4}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score4 ? parseInt(player3Score4) : 0}
+                    min={0}
+                    onChange={setPlayer3Score4}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score4 ? parseInt(player4Score4) : 0}
+                    min={0}
+                    onChange={setPlayer4Score4}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleFour}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*    ---------------- HOLE FIVE CARD ---------------- */}
-    <Center>
-      <div className="hole5 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 5</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score5)}
-                min={0}
-                onChange={setPlayer1Score5}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score5)}
-                min={0}
-                onChange={setPlayer2Score5}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score5)}
-                min={0}
-                onChange={setPlayer3Score5}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score5)}
-                min={0}
-                onChange={setPlayer4Score5}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleFive}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole5 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 5</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score5 ? parseInt(player1Score5) : 0}
+                    min={0}
+                    onChange={setPlayer1Score5}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score5 ? parseInt(player2Score5) : 0}
+                    min={0}
+                    onChange={setPlayer2Score5}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score5 ? parseInt(player3Score5) : 0}
+                    min={0}
+                    onChange={setPlayer3Score5}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score5 ? parseInt(player4Score5) : 0}
+                    min={0}
+                    onChange={setPlayer4Score5}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleFive}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*        ------------------ HOLE SIX CARD ------------------- */}
-    <Center>
-      <div className="hole6 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 6</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score6)}
-                min={0}
-                onChange={setPlayer1Score6}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score6)}
-                min={0}
-                onChange={setPlayer2Score6}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score6)}
-                min={0}
-                onChange={setPlayer3Score6}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score6)}
-                min={0}
-                onChange={setPlayer4Score6}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleSix}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole6 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 6</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score6 ? parseInt(player1Score6) : 0}
+                    min={0}
+                    onChange={setPlayer1Score6}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score6 ? parseInt(player2Score6) : 0}
+                    min={0}
+                    onChange={setPlayer2Score6}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score6 ? parseInt(player3Score6) : 0}
+                    min={0}
+                    onChange={setPlayer3Score6}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score6 ? parseInt(player4Score6) : 0}
+                    min={0}
+                    onChange={setPlayer4Score6}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleSix}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*      -------------- HOLE SEVEN CARD ----------------  */}
-    <Center>
-      <div className="hole7 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 7</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score7)}
-                min={0}
-                onChange={setPlayer1Score7}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score7)}
-                min={0}
-                onChange={setPlayer2Score7}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score7)}
-                min={0}
-                onChange={setPlayer3Score7}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score7)}
-                min={0}
-                onChange={setPlayer4Score7}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleSeven}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole7 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 7</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score7 ? parseInt(player1Score7) : 0}
+                    min={0}
+                    onChange={setPlayer1Score7}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score7 ? parseInt(player2Score7) : 0}
+                    min={0}
+                    onChange={setPlayer2Score7}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score7 ? parseInt(player3Score7) : 0}
+                    min={0}
+                    onChange={setPlayer3Score7}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score7 ? parseInt(player4Score7) : 0}
+                    min={0}
+                    onChange={setPlayer4Score7}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleSeven}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*     ------------- HOLE EIGHT CARD ------------------ */}
-    <Center>
-      <div className="hole8 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 8</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score8)}
-                min={0}
-                onChange={setPlayer1Score8}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score8)}
-                min={0}
-                onChange={setPlayer2Score8}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score8)}
-                min={0}
-                onChange={setPlayer3Score8}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score8)}
-                min={0}
-                onChange={setPlayer4Score8}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleEight}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole8 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 8</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score8 ? parseInt(player1Score8) : 0}
+                    min={0}
+                    onChange={setPlayer1Score8}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score8 ? parseInt(player2Score8) : 0}
+                    min={0}
+                    onChange={setPlayer2Score8}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score8 ? parseInt(player3Score8) : 0}
+                    min={0}
+                    onChange={setPlayer3Score8}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score8 ? parseInt(player4Score8) : 0}
+                    min={0}
+                    onChange={setPlayer4Score8}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleEight}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*      --------------- HOLE NINE CARD ----------------- */}
-    <Center>
-      <div className="hole9 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 9</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score9)}
-                min={0}
-                onChange={setPlayer1Score9}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score9)}
-                min={0}
-                onChange={setPlayer2Score9}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score9)}
-                min={0}
-                onChange={setPlayer3Score9}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score9)}
-                min={0}
-                onChange={setPlayer4Score9}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleNine}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole9 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 9</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score9 ? parseInt(player1Score9) : 0}
+                    min={0}
+                    onChange={setPlayer1Score9}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score9 ? parseInt(player2Score9) : 0}
+                    min={0}
+                    onChange={setPlayer2Score9}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score9 ? parseInt(player3Score9) : 0}
+                    min={0}
+                    onChange={setPlayer3Score9}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score9 ? parseInt(player4Score9) : 0}
+                    min={0}
+                    onChange={setPlayer4Score9}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleNine}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*      -------------- HOLE TEN CARD -------------- */}
-    <Center>
-      <div className="hole10 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 10</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score10)}
-                min={0}
-                onChange={setPlayer1Score10}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score10)}
-                min={0}
-                onChange={setPlayer2Score10}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score10)}
-                min={0}
-                onChange={setPlayer3Score10}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score10)}
-                min={0}
-                onChange={setPlayer4Score10}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleTen}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole10 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 10</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score10 ? parseInt(player1Score10) : 0}
+                    min={0}
+                    onChange={setPlayer1Score10}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score10 ? parseInt(player2Score10) : 0}
+                    min={0}
+                    onChange={setPlayer2Score10}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score10 ? parseInt(player3Score10) : 0}
+                    min={0}
+                    onChange={setPlayer3Score10}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score10 ? parseInt(player4Score10) : 0}
+                    min={0}
+                    onChange={setPlayer4Score10}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleTen}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*      --------------- HOLE ELEVEN CARD ------------ */}
-    <Center>
-      <div className="hole11 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 11</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score11)}
-                min={0}
-                onChange={setPlayer1Score11}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score11)}
-                min={0}
-                onChange={setPlayer2Score11}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score11)}
-                min={0}
-                onChange={setPlayer3Score11}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score11)}
-                min={0}
-                onChange={setPlayer4Score11}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleEleven}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole11 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 11</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score11 ? parseInt(player1Score11) : 0}
+                    min={0}
+                    onChange={setPlayer1Score11}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score11 ? parseInt(player2Score11) : 0}
+                    min={0}
+                    onChange={setPlayer2Score11}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score11 ? parseInt(player3Score11) : 0}
+                    min={0}
+                    onChange={setPlayer3Score11}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score11 ? parseInt(player4Score11) : 0}
+                    min={0}
+                    onChange={setPlayer4Score11}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleEleven}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*       ------------------- HOLE TWELVE CARD ------------------ */}
-    <Center>
-      <div className="hole12 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 12</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score12)}
-                min={0}
-                onChange={setPlayer1Score12}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score12)}
-                min={0}
-                onChange={setPlayer2Score12}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score12)}
-                min={0}
-                onChange={setPlayer3Score12}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score12)}
-                min={0}
-                onChange={setPlayer4Score12}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleTwelve}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole12 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 12</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score12 ? parseInt(player1Score12) : 0}
+                    min={0}
+                    onChange={setPlayer1Score12}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score12 ? parseInt(player2Score12) : 0}
+                    min={0}
+                    onChange={setPlayer2Score12}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score12 ? parseInt(player3Score12) : 0}
+                    min={0}
+                    onChange={setPlayer3Score12}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score12 ? parseInt(player4Score12) : 0}
+                    min={0}
+                    onChange={setPlayer4Score12}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleTwelve}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*     ----------------- HOLE THIRTEEN CARD ------------      */}
-    <Center>
-      <div className="hole13 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 13</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score13)}
-                min={0}
-                onChange={setPlayer1Score13}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score13)}
-                min={0}
-                onChange={setPlayer2Score13}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score13)}
-                min={0}
-                onChange={setPlayer3Score13}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score13)}
-                min={0}
-                onChange={setPlayer4Score13}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleThirteen}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole13 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 13</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score13 ? parseInt(player1Score13) : 0}
+                    min={0}
+                    onChange={setPlayer1Score13}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score13 ? parseInt(player2Score13) : 0}
+                    min={0}
+                    onChange={setPlayer2Score13}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score13 ? parseInt(player3Score13) : 0}
+                    min={0}
+                    onChange={setPlayer3Score13}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score13 ? parseInt(player4Score13) : 0}
+                    min={0}
+                    onChange={setPlayer4Score13}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleThirteen}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*      -------------------  HOLE FOURTEEN CARD --------------------       */}
-    <Center>
-      <div className="hole14 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 14</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score14)}
-                min={0}
-                onChange={setPlayer1Score14}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score14)}
-                min={0}
-                onChange={setPlayer2Score14}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score14)}
-                min={0}
-                onChange={setPlayer3Score14}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score14)}
-                min={0}
-                onChange={setPlayer4Score14}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleFourteen}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole14 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 14</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score14 ? parseInt(player1Score14) : 0}
+                    min={0}
+                    onChange={setPlayer1Score14}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score14 ? parseInt(player2Score14) : 0}
+                    min={0}
+                    onChange={setPlayer2Score14}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score14 ? parseInt(player3Score14) : 0}
+                    min={0}
+                    onChange={setPlayer3Score14}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score14 ? parseInt(player4Score14) : 0}
+                    min={0}
+                    onChange={setPlayer4Score14}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleFourteen}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*     ----------------- HOLE FIFTEEN CARD ---------------------      */}
-    <Center>
-      <div className="hole15 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 15</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score15)}
-                min={0}
-                onChange={setPlayer1Score15}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div> 
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score15)}
-                min={0}
-                onChange={setPlayer2Score15}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score15)}
-                min={0}
-                onChange={setPlayer3Score15}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score15)}
-                min={0}
-                onChange={setPlayer4Score15}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleFifteen}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole15 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 15</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score15 ? parseInt(player1Score15) : 0}
+                    min={0}
+                    onChange={setPlayer1Score15}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score15 ? parseInt(player2Score15) : 0}
+                    min={0}
+                    onChange={setPlayer2Score15}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score15 ? parseInt(player3Score15) : 0}
+                    min={0}
+                    onChange={setPlayer3Score15}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score15 ? parseInt(player4Score15) : 0}
+                    min={0}
+                    onChange={setPlayer4Score15}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleFifteen}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*     ------------------ HOLE SIXTEEN CARD ----------------     */}
-    <Center>
-      <div className="hole16 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 16</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score16)}
-                min={0}
-                onChange={setPlayer1Score16}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score16)}
-                min={0}
-                onChange={setPlayer2Score16}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score16)}
-                min={0}
-                onChange={setPlayer3Score16}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score16)}
-                min={0}
-                onChange={setPlayer4Score16}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleSixteen}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole16 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 16</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score16 ? parseInt(player1Score16) : 0}
+                    min={0}
+                    onChange={setPlayer1Score16}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score16 ? parseInt(player2Score16) : 0}
+                    min={0}
+                    onChange={setPlayer2Score16}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score16 ? parseInt(player3Score16) : 0}
+                    min={0}
+                    onChange={setPlayer3Score16}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score16 ? parseInt(player4Score16) : 0}
+                    min={0}
+                    onChange={setPlayer4Score16}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleSixteen}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*     --------------- HOLE SEVENTEEN CARD -------------    */}
-    <Center>
-      <div className="hole17 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 17</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score17)}
-                min={0}
-                onChange={setPlayer1Score17}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score17)}
-                min={0}
-                onChange={setPlayer2Score17}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score17)}
-                min={0}
-                onChange={setPlayer3Score17}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score17)}
-                min={0}
-                onChange={setPlayer4Score17}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleSeventeen}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole17 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 17</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score17 ? parseInt(player1Score17) : 0}
+                    min={0}
+                    onChange={setPlayer1Score17}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score17 ? parseInt(player2Score17) : 0}
+                    min={0}
+                    onChange={setPlayer2Score17}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score17 ? parseInt(player3Score17) : 0}
+                    min={0}
+                    onChange={setPlayer3Score17}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score17 ? parseInt(player4Score17) : 0}
+                    min={0}
+                    onChange={setPlayer4Score17}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleSeventeen}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
       {/*     ------------------ HOLE EIGHTEEN CARD ----------------    */}
-    <Center>
-      <div className="hole18 scores">
-        <Box>
-          <div className="holeNumber">
-            <h1>Hole 18</h1>
-          </div>
-          <div className="player1">
-            <h1>
-              <div className="playerName">Player 1:{player1}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player1Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player1Score18)}
-                min={0}
-                onChange={setPlayer1Score18}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player2">
-            <h1>
-              <div className="playerName">Player 2:{player2}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player2Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player2Score18)}
-                min={0}
-                onChange={setPlayer2Score18}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player3">
-            <h1>
-              <div className="playerName">Player 3:{player3}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player3Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player3Score18)}
-                min={0}
-                onChange={setPlayer3Score18}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <div className="player4">
-            <h1>
-              <div className="playerName">Player 4:{player4}</div><div className="playerScore"> Score:
-              <NumberInput
-                className="player4Score"
-                size="sm"
-                maxW={20}
-                value={parseInt(player4Score18)}
-                min={0}
-                onChange={setPlayer4Score18}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              </div>
-            </h1>
-          </div>
-          <button className="addScores" onClick={addHoleEighteen}>
-            Save Scores
-          </button>
-        </Box>
-      </div>
-    </Center>
+      <Center>
+        <div className="hole18 scores">
+          <Box>
+            <div className="holeNumber">
+              <h1>Hole 18</h1>
+            </div>
+            <div className="player1">
+              <h1>
+                <div className="playerName">Player 1:{player1}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player1Score"
+                    size="sm"
+                    maxW={20}
+                    value={player1Score18 ? parseInt(player1Score18) : 0}
+                    min={0}
+                    onChange={setPlayer1Score18}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player2">
+              <h1>
+                <div className="playerName">Player 2:{player2}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player2Score"
+                    size="sm"
+                    maxW={20}
+                    value={player2Score18 ? parseInt(player2Score18) : 0}
+                    min={0}
+                    onChange={setPlayer2Score18}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player3">
+              <h1>
+                <div className="playerName">Player 3:{player3}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player3Score"
+                    size="sm"
+                    maxW={20}
+                    value={player3Score18 ? parseInt(player3Score18) : 0}
+                    min={0}
+                    onChange={setPlayer3Score18}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <div className="player4">
+              <h1>
+                <div className="playerName">Player 4:{player4}</div>
+                <div className="playerScore">
+                  {" "}
+                  Score:
+                  <NumberInput
+                    className="player4Score"
+                    size="sm"
+                    maxW={20}
+                    value={player4Score18 ? parseInt(player4Score18) : 0}
+                    min={0}
+                    onChange={setPlayer4Score18}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </div>
+              </h1>
+            </div>
+            <button className="addScores" onClick={addHoleEighteen}>
+              Save Scores
+            </button>
+          </Box>
+        </div>
+      </Center>
     </>
   );
 }
