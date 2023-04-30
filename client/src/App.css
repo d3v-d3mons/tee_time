@@ -12,6 +12,10 @@ body {
   height: 100vh;
 }
 
+a {
+  color: #ffffff;
+}
+
 /* main styles */
 
 .header {
@@ -19,6 +23,12 @@ body {
   background-color: #00a028;
   padding: .5rem;
   color: black;
+}
+
+.displayNickname {
+  border: solid;
+  background-color: #00a028;
+  margin-top: 0%;
 }
 
 .modal {

@@ -20,6 +20,21 @@ export const QUERY_PLAYERS = gql`
     }
 `;
 
+export const QUERY_USER = gql`
+    query user($email: String!) {
+        user(email: $email) {
+            _id
+            firstName
+            lastName
+            email
+            nickname
+            game{
+                partyName
+            }
+        }
+    }
+`;
+
 export const QUERY_GAMES = gql`
     query getGames($partyName: String!) {
         getGames(partyName: $partyName) {

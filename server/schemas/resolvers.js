@@ -32,6 +32,14 @@ const resolvers = {
             }
             throw new AuthenticationError("Must be logged in");
         },
+        user: async (parent, {email} ) => {
+            const params = {};
+            if(email) {
+                params.email = email;
+            }
+            const user = await User.findOne(params).populate('nickname');
+            return user;
+        },
     },
     Mutation: {
         addUser: async (parent, args) => {
