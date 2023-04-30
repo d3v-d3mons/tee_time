@@ -43,7 +43,6 @@ export default function Homepage() {
   const [course, setCourse] = useState("");
   const [startComplete, setComplete] = useState(false);
 
-  if (startComplete === false) {
     return (
       <>
         {auth.loggedIn() ? (
@@ -51,11 +50,6 @@ export default function Homepage() {
             <Center>
               <Button className="createGameBtn" onClick={onOpen}>
                 Create New Game
-              </Button>
-            </Center>
-            <Center>
-              <Button className="addPlyr">
-                <Link to="/newplayer">Add Players</Link>
               </Button>
             </Center>
             <Modal isOpen={isOpen} onClose={onClose}>
@@ -113,7 +107,9 @@ export default function Homepage() {
                       className="submitBtn"
                       onClick={newGameHandler}
                     >
+                      <Link to="/newplayer">
                       Let's Go!
+                      </Link>
                     </Button>
                   </form>
                 </ModalBody>
@@ -139,13 +135,4 @@ export default function Homepage() {
         )}
       </>
     );
-  } else {
-    return (
-      <Center>
-        <Button className="newPlayerBtn">
-          <Link to="/newplayer">Add Players</Link>
-        </Button>
-      </Center>
-    );
-  }
-}
+  } 

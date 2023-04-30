@@ -49,6 +49,7 @@ const typeDefs = gql`
 
     type Query {
         users: User
+        user(email: String!): User
         game: Game
         getPlayers(_id: ID!): Player
         getGames(partyName: String!): Game

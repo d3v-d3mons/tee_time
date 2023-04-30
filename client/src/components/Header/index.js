@@ -14,6 +14,7 @@ import {
   useDisclosure,
   Button,
   ModalFooter,
+  Center
 } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 import { ADD_USER, LOGIN } from "../../utils/mutations";
@@ -33,7 +34,7 @@ export default function Header() {
   const [addUser] = useMutation(ADD_USER);
   const [loginUser] = useMutation(LOGIN);
   const [error, setError] = useState(null);
-
+  
   const handleNewUserForm = async (e) => {
     e.preventDefault();
 
@@ -75,7 +76,7 @@ export default function Header() {
     }
 
     if (!emailLogin || !passwordLogin) {
-      setError("must fill all fields")
+      setError("must fill all fields");
       return;
     }
 
@@ -112,9 +113,12 @@ export default function Header() {
         <Heading as="h1" size="2xl">
           Tee Time
         </Heading>
+      {auth.loggedIn() && (
+          <h1>Hey, {nickname}</h1>
+      )}
       </div>
       <div className="navBar">
-        <Breadcrumb separator=""className="navBar">
+        <Breadcrumb separator="" className="navBar">
           <BreadcrumbItem>
             <BreadcrumbLink
               id="navHomeBtn"
@@ -125,117 +129,112 @@ export default function Header() {
           </BreadcrumbItem>
           {auth.loggedIn() ? (
             <>
-            <BreadcrumbItem>
-              <BreadcrumbLink
-                id="navScorecard"
-                className={activeItem === "/scorecard" ? "activeTab" : ""}
-              >
-                <Link to="/scorecard">Scorecard</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <BreadcrumbLink onClick={logOut} id="navLogout">
-                Log Out
-              </BreadcrumbLink>
-            </BreadcrumbItem>
+              <BreadcrumbItem>
+                <BreadcrumbLink
+                  id="navScorecard"
+                  className={activeItem === "/scorecard" ? "activeTab" : ""}
+                >
+                  <Link to="/scorecard">Scorecard</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbItem>
+                <BreadcrumbLink onClick={logOut} id="navLogout">
+                  Log Out
+                </BreadcrumbLink>
+              </BreadcrumbItem>
             </>
           ) : (
             <>
-            <BreadcrumbItem>
-              <BreadcrumbLink id="navNoScorecard">
-                Sign in for scorecard
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <BreadcrumbLink onClick={onOpen} id="navLogin">
-                Login
-              </BreadcrumbLink>
-              <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
-                <ModalContent className="modal">
-                  <ModalHeader>Login</ModalHeader>
-                  <ModalCloseButton />
-                  <ModalBody>
-                    <form onSubmit={handleLogin}>
-                      <Input
-                        value={emailLogin}
-                        onChange={(e) => setEmailLogin(e.target.value)}
-                        type="text"
-                        className="loginEmail"
-                        placeholder="enter email here"
-                      />
-                      <Input
-                        value={passwordLogin}
-                        onChange={(e) => setPasswordLogin(e.target.value)}
-                        type="password"
-                        className="loginPassword"
-                        placeholder="enter password here"
-                      />
+              <BreadcrumbItem>
+                <BreadcrumbLink onClick={onOpen} id="navLogin">
+                  Login
+                </BreadcrumbLink>
+                <Modal isOpen={isOpen} onClose={onClose}>
+                  <ModalOverlay />
+                  <ModalContent className="modal">
+                    <ModalHeader>Login</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      <form onSubmit={handleLogin}>
+                        <Input
+                          value={emailLogin}
+                          onChange={(e) => setEmailLogin(e.target.value)}
+                          type="text"
+                          className="loginEmail"
+                          placeholder="enter email here"
+                        />
+                        <Input
+                          value={passwordLogin}
+                          onChange={(e) => setPasswordLogin(e.target.value)}
+                          type="password"
+                          className="loginPassword"
+                          placeholder="enter password here"
+                        />
+                        <Button
+                          className="loginBtn"
+                          type="submit"
+                          colorScheme="blue"
+                        >
+                          Login
+                        </Button>
+                      </form>
+                      {error && <h1 className="danger">{error}</h1>}
+                      <ModalHeader>Create Account</ModalHeader>
+                      <form onSubmit={handleNewUserForm}>
+                        <Input
+                          value={firstName}
+                          onChange={(e) => setFirstName(e.target.value)}
+                          type="text"
+                          className="firstName"
+                          placeholder="enter your first name"
+                        />
+                        <Input
+                          value={lastName}
+                          onChange={(e) => setLastName(e.target.value)}
+                          type="lastName"
+                          className="lastName"
+                          placeholder="enter your last name"
+                        />
+                        <Input
+                          value={nickname}
+                          onChange={(e) => setNickname(e.target.value)}
+                          className="nickname"
+                          placeholder="enter a nickname"
+                        />
+                        <Input
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="email"
+                          placeholder="enter your email here"
+                        />
+                        <Input
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          className="password"
+                          placeholder="enter your password here"
+                        />
+                        <Button
+                          className="submitbtn"
+                          type="submit"
+                          colorScheme="blue"
+                        >
+                          Create an Account
+                        </Button>
+                      </form>
+                    </ModalBody>
+                    <ModalFooter>
                       <Button
-                        className="loginBtn"
-                        type="submit"
+                        variant="ghost"
                         colorScheme="blue"
+                        mr={3}
+                        onClick={onClose}
                       >
-                        Login
+                        Close
                       </Button>
-                    </form>
-                    {error && <h1 className="danger">{error}</h1>}
-                    <ModalHeader>Create Account</ModalHeader>
-                    <form onSubmit={handleNewUserForm}>
-                      <Input
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
-                        type="text"
-                        className="firstName"
-                        placeholder="enter your first name"
-                      />
-                      <Input
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
-                        type="lastName"
-                        className="lastName"
-                        placeholder="enter your last name"
-                      />
-                      <Input
-                        value={nickname}
-                        onChange={(e) => setNickname(e.target.value)}
-                        className="nickname"
-                        placeholder="enter a nickname"
-                      />
-                      <Input
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="email"
-                        placeholder="enter your email here"
-                      />
-                      <Input
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="password"
-                        placeholder="enter your password here"
-                      />
-                      <Button
-                        className="submitbtn"
-                        type="submit"
-                        colorScheme="blue"
-                      >
-                        Create an Account
-                      </Button>
-                    </form>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button
-                      variant="ghost"
-                      colorScheme="blue"
-                      mr={3}
-                      onClick={onClose}
-                    >
-                      Close
-                    </Button>
-                  </ModalFooter>
-                </ModalContent>
-              </Modal>
-            </BreadcrumbItem>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+              </BreadcrumbItem>
             </>
           )}
         </Breadcrumb>
